@@ -2,7 +2,10 @@
     <string name="app_name">Lord Of The Ping</string>
     <string name="action_settings">Settings</string>
 
-    <string name="leaderboard_empty_view">Sorry we couldn\'t the leader board at this time.</string>
+    <string name="api_domain">https://zappos.lordoftheping.com/api</string>
+
+    <string name="leader_board_empty_error">Sorry we couldn\'t the leader board at this time.</string>
+    <string name="leader_board_empty">There is currently nobody on the leader board, go play!</string>
     <string name="player_profile_empty_view">Sorry we couldn\'t this profile at this time.</string>
     <string name="your_profile_empty_view">Sorry we couldn\'t your profile at this time.</string>
     <string name="title_activity_main">MainActivity</string>
