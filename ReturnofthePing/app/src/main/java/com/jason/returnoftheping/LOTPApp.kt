@@ -25,6 +25,11 @@ class LOTPApp : Application() {
     override fun onCreate() {
         super.onCreate()
         val client = OkHttpClient.Builder()
+                .addInterceptor { chain ->
+                    val ongoing = chain.request().newBuilder()
+                    ongoing.addHeader("X-LOTP-API-KEY", "e7ee2d6e0118578da9ada86e8c93ba3313793a0cf7e0b333fa90b996b1fc9581")
+                    chain.proceed(ongoing.build())
+                }
                 .addNetworkInterceptor(StethoInterceptor())
                 .build()
 

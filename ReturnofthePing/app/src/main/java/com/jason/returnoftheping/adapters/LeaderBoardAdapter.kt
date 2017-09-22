@@ -12,7 +12,7 @@ import com.jason.returnoftheping.models.LeaderBoardItem
 /**
  * Created by Jason on 9/17/17.
  */
-class LeaderBoardAdapter(val items: ArrayList<LeaderBoardItem>) : RecyclerView.Adapter<LeaderBoardAdapter.ViewHolder>() {
+class LeaderBoardAdapter(val items: List<LeaderBoardItem>) : RecyclerView.Adapter<LeaderBoardAdapter.ViewHolder>() {
 
     override fun getItemCount(): Int = items.size
 

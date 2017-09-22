@@ -10,7 +10,7 @@ import android.view.ViewGroup
 import com.jason.returnoftheping.LOTPApp
 import com.jason.returnoftheping.R
 import com.jason.returnoftheping.adapters.LeaderBoardAdapter
-import com.jason.returnoftheping.models.LeaderBoardItem
+import com.jason.returnoftheping.models.LeaderBoard
 import kotlinx.android.synthetic.main.fragment_leader_board.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -23,29 +23,35 @@ import retrofit2.Response
 class LeaderBoardFragment : Fragment() {
 
     private val TAG = LeaderBoardFragment::class.java.simpleName
-    private var app = LOTPApp()
+    private lateinit var app: LOTPApp
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+    }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val root = inflater?.inflate(R.layout.fragment_leader_board, container, false)
-        leader_board_progress.visibility = View.VISIBLE
-
+        app = activity?.application as LOTPApp
         refreshData()
 
         return root
     }
 
     private fun refreshData() {
+
+        leader_board_progress?.visibility = View.VISIBLE
+
         try {
             val items = app.getPingPongService().getLeaderBoard()
-            items.enqueue(object : Callback<List<LeaderBoardItem>> {
-                override fun onResponse(leaderboard: Call<List<LeaderBoardItem>>, response: Response<List<LeaderBoardItem>>) {
+            items.enqueue(object : Callback<LeaderBoard> {
+                override fun onResponse(leaderboard: Call<LeaderBoard>, response: Response<LeaderBoard>) {
                     Log.d(TAG, "Received a leader board!")
                     // Why does this want to be casted?
                     if (response.isSuccessful && response.body() != null) {
-                        if(response.body().isNotEmpty()){
+                        if(response.body().leaderboard.isNotEmpty()){
                             leader_board_progress.visibility = View.INVISIBLE
                             leader_board_recycler.visibility = View.VISIBLE
-                            bindLeaderBoard(ArrayList<LeaderBoardItem>(response.body()))
+                            bindLeaderBoard(response.body())
                         } else {
                             leader_board_progress.visibility = View.INVISIBLE
                             leader_board_empty.visibility = View.VISIBLE
@@ -57,10 +63,10 @@ class LeaderBoardFragment : Fragment() {
                     }
                 }
 
-                override fun onFailure(call: Call<List<LeaderBoardItem>>, t: Throwable) {
+                override fun onFailure(call: Call<LeaderBoard>, t: Throwable) {
                     Log.d(TAG, "FAILURE!!!")
-                    leader_board_progress.visibility = View.INVISIBLE
-                    leader_board_empty.visibility = View.VISIBLE
+                    leader_board_progress?.visibility = View.INVISIBLE
+                    leader_board_empty?.visibility = View.VISIBLE
                 }
             })
         } catch (e: Exception) {
@@ -69,9 +75,9 @@ class LeaderBoardFragment : Fragment() {
 
     }
 
-    private fun bindLeaderBoard(items: ArrayList<LeaderBoardItem>) {
+    private fun bindLeaderBoard(items: LeaderBoard) {
         leader_board_recycler.layoutManager = LinearLayoutManager(context)
-        leader_board_recycler.adapter = LeaderBoardAdapter(items)
+        leader_board_recycler.adapter = LeaderBoardAdapter(items.leaderboard)
 
     }
 
