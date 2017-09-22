@@ -49,7 +49,6 @@ class LeaderBoardFragment : Fragment() {
             items.enqueue(object : Callback<LeaderBoard> {
                 override fun onResponse(leaderboard: Call<LeaderBoard>, response: Response<LeaderBoard>) {
                     Log.d(TAG, "Received a leader board!")
-                    // Why does this want to be casted?
                     if (response.isSuccessful && response.body() != null) {
                         if (response.body().leaderboard.isNotEmpty()) {
                             leader_board_progress.visibility = View.INVISIBLE
@@ -67,7 +66,7 @@ class LeaderBoardFragment : Fragment() {
                 }
 
                 override fun onFailure(call: Call<LeaderBoard>, t: Throwable) {
-                    Log.d(TAG, "FAILURE!!!")
+                    Log.d(TAG, "FAILURE getting a leader board!!")
                     leader_board_progress?.visibility = View.INVISIBLE
                     leader_board_empty?.visibility = View.VISIBLE
                 }

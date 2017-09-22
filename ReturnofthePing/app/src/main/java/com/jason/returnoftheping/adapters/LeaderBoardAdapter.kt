@@ -25,7 +25,6 @@ class LeaderBoardAdapter(val items: List<LeaderBoardItem>) : RecyclerView.Adapte
 
         fun bindItem(item: LeaderBoardItem) {
             binding.item = item
-            binding.executePendingBindings()
         }
     }
 }
