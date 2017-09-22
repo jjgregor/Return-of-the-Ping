@@ -2,6 +2,7 @@ package com.jason.returnoftheping.fragments
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
 import android.view.LayoutInflater
@@ -15,6 +16,8 @@ import kotlinx.android.synthetic.main.fragment_leader_board.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+
+
 
 
 /**
@@ -48,7 +51,7 @@ class LeaderBoardFragment : Fragment() {
                     Log.d(TAG, "Received a leader board!")
                     // Why does this want to be casted?
                     if (response.isSuccessful && response.body() != null) {
-                        if(response.body().leaderboard.isNotEmpty()){
+                        if (response.body().leaderboard.isNotEmpty()) {
                             leader_board_progress.visibility = View.INVISIBLE
                             leader_board_recycler.visibility = View.VISIBLE
                             bindLeaderBoard(response.body())
@@ -76,6 +79,7 @@ class LeaderBoardFragment : Fragment() {
     }
 
     private fun bindLeaderBoard(items: LeaderBoard) {
+        leader_board_recycler.addItemDecoration(DividerItemDecoration(context, LinearLayoutManager.VERTICAL))
         leader_board_recycler.layoutManager = LinearLayoutManager(context)
         leader_board_recycler.adapter = LeaderBoardAdapter(items.leaderboard)
 

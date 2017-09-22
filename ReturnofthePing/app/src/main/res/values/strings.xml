@@ -58,6 +58,11 @@
     <string name="confirm_btn_txt">confirm</string>
     <string name="inbox_empty_view">Sorry we couldn\'t load your inbox at this time.</string>
     <string name="please_sign_in">Please sign in to view your inbox.</string>
+    <string name="leader_board_rank_lbl">Rank</string>
+    <string name="leader_board_rating_lbl">Rating</string>
+    <string name="leader_board_losses_lbl">Losses</string>
+    <string name="leader_board_wins_lbl">Wins</string>
+    <string name="leader_board_player_lbl">Player</string>
 
     <!-- Plurals -->
     <plurals name="matches">

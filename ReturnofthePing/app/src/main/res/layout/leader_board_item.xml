@@ -11,17 +11,21 @@
     <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/leader_board_item_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:paddingStart="16dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:paddingEnd="16dp">
 
         <TextView
             android:id="@+id/leader_board_pos"
-            android:layout_width="56dp"
+            android:layout_width="42dp"
             android:layout_height="wrap_content"
-            android:maxLength="4"
+            android:maxLength="3"
             android:paddingEnd="@dimen/leader_board_padding"
-            android:paddingStart="@dimen/activity_vertical_margin"
             android:text="@{Integer.toString(item.rank)}"
             android:textAlignment="textStart"
             android:textAppearance="?android:textAppearanceMedium"
@@ -76,7 +80,6 @@
             android:id="@+id/leader_board_name"
             android:layout_width="160dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
             android:ellipsize="end"
             android:maxLines="1"
             android:paddingEnd="@dimen/leader_board_padding"

@@ -1,23 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.LeaderBoardFragment"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".fragments.LeaderBoardFragment">
+
+    <include
+        layout="@layout/leader_board_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@android:color/darker_gray" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/leader_board_recycler"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="gone"/>
+        android:visibility="gone" />
 
     <ProgressBar
         android:id="@+id/leader_board_progress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:visibility="gone"/>
+        android:visibility="gone" />
 
     <TextView
         android:id="@+id/leader_board_empty"
@@ -25,8 +35,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="@string/leader_board_empty_error"
-        android:textAppearance="?android:textAppearanceMedium"
         android:textAlignment="center"
-        android:visibility="gone"/>
+        android:textAppearance="?android:textAppearanceMedium"
+        android:visibility="gone" />
 
-</FrameLayout>
+</LinearLayout>
