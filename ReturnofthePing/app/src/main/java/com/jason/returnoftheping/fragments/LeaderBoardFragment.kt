@@ -13,6 +13,7 @@ import com.jason.returnoftheping.R
 import com.jason.returnoftheping.adapters.LeaderBoardAdapter
 import com.jason.returnoftheping.models.LeaderBoard
 import kotlinx.android.synthetic.main.fragment_leader_board.*
+import kotlinx.android.synthetic.main.leader_board_header.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -37,7 +38,6 @@ class LeaderBoardFragment : Fragment() {
     }
 
     private fun refreshData() {
-
         leader_board_progress?.visibility = View.VISIBLE
         try {
             val items = app.getPingPongService().getLeaderBoard()
@@ -48,6 +48,7 @@ class LeaderBoardFragment : Fragment() {
                     if (response.isSuccessful && response.body() != null) {
                         if (response.body().leaderboard.isNotEmpty()) {
                             leader_board_progress.visibility = View.GONE
+                            leader_board_header_container.visibility = View.VISIBLE
                             leader_board_recycler.visibility = View.VISIBLE
                             bindLeaderBoard(response.body())
                         } else {
@@ -60,7 +61,7 @@ class LeaderBoardFragment : Fragment() {
                 }
 
                 override fun onFailure(call: Call<LeaderBoard>, t: Throwable) {
-                    Log.d(TAG, "FAILURE getting a leader board!!")
+                    Log.d(TAG, "FAILURE getting a leader board!!", t.cause)
                     displayEmptyView()
                 }
             })
