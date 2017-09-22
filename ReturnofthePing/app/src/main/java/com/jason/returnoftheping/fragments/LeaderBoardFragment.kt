@@ -28,10 +28,6 @@ class LeaderBoardFragment : Fragment() {
     private val TAG = LeaderBoardFragment::class.java.simpleName
     private lateinit var app: LOTPApp
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val root = inflater?.inflate(R.layout.fragment_leader_board, container, false)
         app = activity?.application as LOTPApp
@@ -43,45 +39,45 @@ class LeaderBoardFragment : Fragment() {
     private fun refreshData() {
 
         leader_board_progress?.visibility = View.VISIBLE
-
         try {
             val items = app.getPingPongService().getLeaderBoard()
             items.enqueue(object : Callback<LeaderBoard> {
-                override fun onResponse(leaderboard: Call<LeaderBoard>, response: Response<LeaderBoard>) {
+
+                override fun onResponse(leaderBoard: Call<LeaderBoard>, response: Response<LeaderBoard>) {
                     Log.d(TAG, "Received a leader board!")
                     if (response.isSuccessful && response.body() != null) {
                         if (response.body().leaderboard.isNotEmpty()) {
-                            leader_board_progress.visibility = View.INVISIBLE
+                            leader_board_progress.visibility = View.GONE
                             leader_board_recycler.visibility = View.VISIBLE
                             bindLeaderBoard(response.body())
                         } else {
-                            leader_board_progress.visibility = View.INVISIBLE
-                            leader_board_empty.visibility = View.VISIBLE
+                            displayEmptyView()
                             leader_board_empty.text = getString(R.string.leader_board_empty)
                         }
                     } else {
-                        leader_board_progress.visibility = View.INVISIBLE
-                        leader_board_empty.visibility = View.VISIBLE
+                        displayEmptyView()
                     }
                 }
 
                 override fun onFailure(call: Call<LeaderBoard>, t: Throwable) {
                     Log.d(TAG, "FAILURE getting a leader board!!")
-                    leader_board_progress?.visibility = View.INVISIBLE
-                    leader_board_empty?.visibility = View.VISIBLE
+                    displayEmptyView()
                 }
             })
         } catch (e: Exception) {
-            Log.d(TAG, "Exception: ", e)
+            Log.d(TAG, "Exception: ", e.cause)
         }
+    }
 
+    private fun displayEmptyView(){
+        leader_board_progress?.visibility = View.GONE
+        leader_board_empty?.visibility = View.VISIBLE
     }
 
     private fun bindLeaderBoard(items: LeaderBoard) {
         leader_board_recycler.addItemDecoration(DividerItemDecoration(context, LinearLayoutManager.VERTICAL))
         leader_board_recycler.layoutManager = LinearLayoutManager(context)
         leader_board_recycler.adapter = LeaderBoardAdapter(items.leaderboard)
-
     }
 
 }
