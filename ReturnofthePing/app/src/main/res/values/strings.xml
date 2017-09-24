@@ -63,6 +63,7 @@
     <string name="leader_board_losses_lbl">Losses</string>
     <string name="leader_board_wins_lbl">Wins</string>
     <string name="leader_board_player_lbl">Player</string>
+    <string name="try_again">Try Again</string>
 
     <!-- Plurals -->
     <plurals name="matches">

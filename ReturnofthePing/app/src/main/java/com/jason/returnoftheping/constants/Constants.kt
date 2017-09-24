@@ -9,4 +9,6 @@ object Constants {
     val PASSWORD = "password"
     val PLAYER = "player"
     val STATE_PROFILE = "profile"
+    val MATCHES = "matches"
+    val STATS = "stats"
 }

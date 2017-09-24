@@ -20,8 +20,8 @@ import rx.schedulers.Schedulers
 class SignInFragment : Fragment() {
 
     private val TAG = SignInFragment::class.java.name
+    private var callbacks: SignInCallbacks? = null
     private lateinit var app: LOTPApp
-    private lateinit var callbacks: SignInCallbacks
 
     companion object {
         fun newInstance(email: String, password: String): SignInFragment {
@@ -55,13 +55,14 @@ class SignInFragment : Fragment() {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({ response ->
                     if (response != null) {
-                        callbacks.signInSuccessful(response)
+                        callbacks?.signInSuccessful(response)
                     } else {
-                        callbacks.signInFailed(getString(R.string.sign_in_error))
+                        callbacks?.signInFailed(getString(R.string.sign_in_error))
                     }
                     detach()
                 }, { t: Throwable? ->
                     Log.e(TAG, "Sign In failed: ", t)
+                    callbacks?.signInFailed(getString(R.string.sign_in_error))
                 })
     }
 

@@ -2,10 +2,7 @@ package com.jason.returnoftheping.services
 
 import com.jason.returnoftheping.models.*
 import retrofit2.Call
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.Path
+import retrofit2.http.*
 import rx.Observable
 
 
@@ -17,8 +14,9 @@ interface LOTPService {
     @GET("v1/leaderboard")
     fun getLeaderBoard(): Observable<LeaderBoard>
 
+    @FormUrlEncoded
     @POST("v1/signin")
-    fun signIn(@Body email: String, password: String): Observable<SignInRegisterResponse>
+    fun signIn(@Field("email") email: String, @Field("password") password: String): Observable<SignInRegisterResponse>
 
     @POST("v1/register")
     fun register(@Body credentials: Player): Observable<Player>

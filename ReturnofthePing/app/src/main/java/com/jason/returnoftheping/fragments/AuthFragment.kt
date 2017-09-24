@@ -6,6 +6,7 @@ import android.content.Context
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v4.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -50,6 +51,7 @@ class AuthFragment : Fragment(), SignInFragment.SignInCallbacks {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         addListeners()
+        app = activity.application as LOTPApp
     }
 
     private fun addListeners() {
@@ -196,7 +198,20 @@ class AuthFragment : Fragment(), SignInFragment.SignInCallbacks {
     }
 
     override fun signInFailed(error: String) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        authFailed(false, error);
+        view?.let {
+            Snackbar.make(it, getString(R.string.sign_in_error), Snackbar.LENGTH_LONG).show();
+        }
+    }
+
+    private fun authFailed(isRegistration: Boolean, error: String) {
+        if (isRegistration) {
+            register_btn.text = getString(R.string.try_again)
+        } else {
+            sign_in_btn.text = getString(R.string.try_again)
+        }
+
+        Log.d(TAG, "Failed to sign in/register: " + error)
     }
 
     private fun dismissKeyboard() {
