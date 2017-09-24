@@ -6,7 +6,7 @@ import android.util.Log
 import com.jason.returnoftheping.LOTPApp
 import com.jason.returnoftheping.R
 import com.jason.returnoftheping.constants.Constants
-import com.jason.returnoftheping.models.Player
+import com.jason.returnoftheping.models.SignInRegisterResponse
 import com.jason.returnoftheping.util.HelperUtil
 import rx.android.schedulers.AndroidSchedulers
 import rx.schedulers.Schedulers
@@ -35,7 +35,7 @@ class SignInFragment : Fragment() {
     }
 
     interface SignInCallbacks {
-        fun signInSuccessful(player: Player)
+        fun signInSuccessful(response: SignInRegisterResponse)
 
         fun signInFailed(error: String)
     }
@@ -55,9 +55,9 @@ class SignInFragment : Fragment() {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({ response ->
                     if (response != null) {
-                        callbacks.signInSuccessful(response.player);
+                        callbacks.signInSuccessful(response)
                     } else {
-                        callbacks.signInFailed(getString(R.string.sign_in_error));
+                        callbacks.signInFailed(getString(R.string.sign_in_error))
                     }
                     detach()
                 }, { t: Throwable? ->

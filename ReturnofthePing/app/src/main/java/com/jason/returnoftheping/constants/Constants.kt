@@ -7,4 +7,6 @@ object Constants {
     val EXTRA_LEADER_BOARD = "extra-leader-board"
     val EMAIL = "email"
     val PASSWORD = "password"
+    val PLAYER = "player"
+    val STATE_PROFILE = "profile"
 }

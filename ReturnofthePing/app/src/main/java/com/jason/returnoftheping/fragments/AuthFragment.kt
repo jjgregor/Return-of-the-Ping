@@ -13,6 +13,7 @@ import android.view.inputmethod.InputMethodManager
 import com.jason.returnoftheping.LOTPApp
 import com.jason.returnoftheping.R
 import com.jason.returnoftheping.models.Player
+import com.jason.returnoftheping.models.SignInRegisterResponse
 import com.jason.returnoftheping.preferences.Preferences
 import kotlinx.android.synthetic.main.fragment_auth.*
 import org.apache.commons.validator.routines.EmailValidator
@@ -175,22 +176,22 @@ class AuthFragment : Fragment(), SignInFragment.SignInCallbacks {
         }
     }
 
-    override fun signInSuccessful(player: Player) {
-        playerSignedIn(player)
+    override fun signInSuccessful(response: SignInRegisterResponse) {
+        playerSignedIn(response)
     }
 
-    private fun playerSignedIn(player: Player) {
-        Preferences().setCurrentPlayer(player, activity)
-        app.setCurrentPlayer(player)
+    private fun playerSignedIn(response: SignInRegisterResponse) {
+        Preferences().setCurrentPlayer(response.player, activity)
+        app.setCurrentPlayer(response.player)
 
-//        val profileFragment = ProfileFragment.newInstance(player)
-//        fragmentManager
-//                .beginTransaction()
-//                .remove(this)
-//                .add(profileFragment, "profile_fragment")
-//                .commit()
-        
-        callBacks?.let { it.playerSignedIn(player) }
+        val profileFragment = ProfileFragment.newInstance(response)
+        fragmentManager
+                .beginTransaction()
+                .remove(this)
+                .add(profileFragment, "profile_fragment")
+                .commit()
+
+        callBacks?.let { it.playerSignedIn(response.player) }
         view?.let { Snackbar.make(it, getString(R.string.sign_in_successful), Snackbar.LENGTH_LONG).show() }
     }
 
