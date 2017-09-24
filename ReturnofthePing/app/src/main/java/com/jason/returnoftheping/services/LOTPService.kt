@@ -18,7 +18,7 @@ interface LOTPService {
     fun getLeaderBoard(): Observable<LeaderBoard>
 
     @POST("v1/signin")
-    fun signIn(@Body credentials: Player): Observable<Player>
+    fun signIn(@Body email: String, password: String): Observable<SignInRegisterResponse>
 
     @POST("v1/register")
     fun register(@Body credentials: Player): Observable<Player>

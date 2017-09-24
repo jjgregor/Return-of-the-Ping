@@ -4,31 +4,44 @@ import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
 import android.content.Context
 import android.os.Bundle
+import android.support.design.widget.Snackbar
 import android.support.v4.app.Fragment
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import com.jason.returnoftheping.LOTPApp
 import com.jason.returnoftheping.R
+import com.jason.returnoftheping.models.Player
+import com.jason.returnoftheping.preferences.Preferences
 import kotlinx.android.synthetic.main.fragment_auth.*
 import org.apache.commons.validator.routines.EmailValidator
-import java.security.MessageDigest
 
 
 /**
  * Created by Jason on 9/24/17.
  */
 
-class AuthFragment : Fragment() {
+class AuthFragment : Fragment(), SignInFragment.SignInCallbacks {
 
     val TAG = AuthFragment::class.java.name
     private lateinit var app: LOTPApp
+    private var callBacks: AuthCallbacks? = null
+
+
+    interface AuthCallbacks {
+        fun playerSignedIn(player: Player)
+
+        fun authCancelled()
+    }
+
+    fun setAuthCallbacks(callback: AuthCallbacks) {
+        callBacks = callback
+    }
+
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val root = inflater?.inflate(R.layout.fragment_auth, container, false)
-        app = activity?.application as LOTPApp
 
         return root
     }
@@ -109,12 +122,12 @@ class AuthFragment : Fragment() {
             } else {
                 sign_in_password.error = null
             }
-//            val fragment = SignInFragment.newInstance(email, password)
-//            fragment.setSignInCallbacks(this@AuthFragment)
-//            fragmentManager
-//                    .beginTransaction()
-//                    .add(fragment, SignInFragment::class.java.getName())
-//                    .commit()
+            val fragment = SignInFragment.newInstance(email, password)
+            fragment.setSignInCallbacks(this@AuthFragment)
+            fragmentManager
+                    .beginTransaction()
+                    .add(fragment, SignInFragment::class.java.name)
+                    .commit()
         }
 
         register_btn.setOnClickListener {
@@ -162,20 +175,27 @@ class AuthFragment : Fragment() {
         }
     }
 
-    fun sha256(input: String?): String? {
-        var result: String? = input
-        input?.let {
-            try {
-                val md = MessageDigest.getInstance("SHA-256")
-                md.update(input.toByteArray(charset("UTF-8")))
-                val digest = md.digest()
-                result = String.format("%064x", java.math.BigInteger(1, digest))
-            } catch (e: Exception) {
-                Log.e(TAG, "Error hashing password: ", e)
-            }
-        }
+    override fun signInSuccessful(player: Player) {
+        playerSignedIn(player)
+    }
 
-        return result
+    private fun playerSignedIn(player: Player) {
+        Preferences().setCurrentPlayer(player, activity)
+        app.setCurrentPlayer(player)
+
+//        val profileFragment = ProfileFragment.newInstance(player)
+//        fragmentManager
+//                .beginTransaction()
+//                .remove(this)
+//                .add(profileFragment, "profile_fragment")
+//                .commit()
+        
+        callBacks?.let { it.playerSignedIn(player) }
+        view?.let { Snackbar.make(it, getString(R.string.sign_in_successful), Snackbar.LENGTH_LONG).show() }
+    }
+
+    override fun signInFailed(error: String) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     private fun dismissKeyboard() {

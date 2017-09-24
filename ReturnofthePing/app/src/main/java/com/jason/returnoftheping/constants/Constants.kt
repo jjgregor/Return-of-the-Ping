@@ -5,4 +5,6 @@ package com.jason.returnoftheping.constants
  */
 object Constants {
     val EXTRA_LEADER_BOARD = "extra-leader-board"
+    val EMAIL = "email"
+    val PASSWORD = "password"
 }
