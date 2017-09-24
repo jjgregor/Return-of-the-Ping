@@ -11,15 +11,13 @@ import android.view.ViewGroup
 import com.jason.returnoftheping.LOTPApp
 import com.jason.returnoftheping.R
 import com.jason.returnoftheping.adapters.LeaderBoardAdapter
+import com.jason.returnoftheping.constants.Constants
 import com.jason.returnoftheping.models.LeaderBoard
 import kotlinx.android.synthetic.main.fragment_leader_board.*
 import kotlinx.android.synthetic.main.leader_board_header.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-
-
-
 
 /**
  * Created by Jason on 9/17/17.
@@ -28,13 +26,31 @@ class LeaderBoardFragment : Fragment() {
 
     private val TAG = LeaderBoardFragment::class.java.simpleName
     private lateinit var app: LOTPApp
+    private var mLeaderBoard: LeaderBoard? = null
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val root = inflater?.inflate(R.layout.fragment_leader_board, container, false)
         app = activity?.application as LOTPApp
-        refreshData()
 
         return root
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        if(savedInstanceState?.containsKey(Constants.EXTRA_LEADERBOARD) == true) {
+            mLeaderBoard = savedInstanceState.getSerializable(Constants.EXTRA_LEADERBOARD) as LeaderBoard
+            setLeaderBoardVisible()
+            bindLeaderBoard(mLeaderBoard)
+        } else {
+            refreshData()
+        }
+    }
+
+    override fun onSaveInstanceState(outState: Bundle?) {
+        super.onSaveInstanceState(outState)
+        outState?.let {
+            it.putSerializable(Constants.EXTRA_LEADERBOARD, mLeaderBoard)
+        }
     }
 
     private fun refreshData() {
@@ -47,9 +63,8 @@ class LeaderBoardFragment : Fragment() {
                     Log.d(TAG, "Received a leader board!")
                     if (response.isSuccessful && response.body() != null) {
                         if (response.body().leaderboard.isNotEmpty()) {
-                            leader_board_progress.visibility = View.GONE
-                            leader_board_header_container.visibility = View.VISIBLE
-                            leader_board_recycler.visibility = View.VISIBLE
+                            mLeaderBoard = response.body()
+                            setLeaderBoardVisible()
                             bindLeaderBoard(response.body())
                         } else {
                             displayEmptyView()
@@ -70,15 +85,23 @@ class LeaderBoardFragment : Fragment() {
         }
     }
 
-    private fun displayEmptyView(){
+    private fun displayEmptyView() {
         leader_board_progress?.visibility = View.GONE
         leader_board_empty?.visibility = View.VISIBLE
     }
 
-    private fun bindLeaderBoard(items: LeaderBoard) {
-        leader_board_recycler.addItemDecoration(DividerItemDecoration(context, LinearLayoutManager.VERTICAL))
-        leader_board_recycler.layoutManager = LinearLayoutManager(context)
-        leader_board_recycler.adapter = LeaderBoardAdapter(items.leaderboard)
+    private fun setLeaderBoardVisible(){
+        leader_board_progress.visibility = View.GONE
+        leader_board_header_container.visibility = View.VISIBLE
+        leader_board_recycler.visibility = View.VISIBLE
+    }
+
+    private fun bindLeaderBoard(items: LeaderBoard?) {
+        items?.let {
+            leader_board_recycler.addItemDecoration(DividerItemDecoration(context, LinearLayoutManager.VERTICAL))
+            leader_board_recycler.layoutManager = LinearLayoutManager(context)
+            leader_board_recycler.adapter = LeaderBoardAdapter(it.leaderboard)
+        }
     }
 
 }
