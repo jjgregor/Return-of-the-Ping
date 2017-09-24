@@ -37,8 +37,8 @@ class LeaderBoardFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         leader_board_progress?.visibility = View.VISIBLE
-        if(savedInstanceState?.containsKey(Constants.EXTRA_LEADERBOARD) == true) {
-            mLeaderBoard = savedInstanceState.getSerializable(Constants.EXTRA_LEADERBOARD) as LeaderBoard
+        if(savedInstanceState?.containsKey(Constants.EXTRA_LEADER_BOARD) == true) {
+            mLeaderBoard = savedInstanceState.getSerializable(Constants.EXTRA_LEADER_BOARD) as LeaderBoard
             setLeaderBoardVisible()
             bindLeaderBoard(mLeaderBoard)
         } else {
@@ -49,7 +49,7 @@ class LeaderBoardFragment : Fragment() {
     override fun onSaveInstanceState(outState: Bundle?) {
         super.onSaveInstanceState(outState)
         outState?.let {
-            it.putSerializable(Constants.EXTRA_LEADERBOARD, mLeaderBoard)
+            it.putSerializable(Constants.EXTRA_LEADER_BOARD, mLeaderBoard)
         }
     }
 

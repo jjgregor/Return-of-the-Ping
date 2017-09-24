@@ -18,10 +18,10 @@ interface LOTPService {
     fun getLeaderBoard(): Observable<LeaderBoard>
 
     @POST("v1/signin")
-    fun signIn(@Body credentials: Player): Call<Player>
+    fun signIn(@Body credentials: Player): Observable<Player>
 
     @POST("v1/register")
-    fun register(@Body credentials: Player): Call<Player>
+    fun register(@Body credentials: Player): Observable<Player>
 
     @POST("v1/logout")
     fun logOut(): Call<Player>
