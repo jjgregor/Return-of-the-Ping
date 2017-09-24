@@ -10,6 +10,7 @@ import com.jason.returnoftheping.services.LOTPService
 import com.jason.returnoftheping.util.ObjectMapperFactory
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
+import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory
 import retrofit2.converter.jackson.JacksonConverterFactory
 
 
@@ -35,6 +36,7 @@ class LOTPApp : Application() {
 
         val retrofit = Retrofit.Builder().baseUrl(getString(R.string.api_domain))
                 .addConverterFactory(JacksonConverterFactory.create(ObjectMapperFactory().getObjectMapper()))
+                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .client(client)
                 .build()
 

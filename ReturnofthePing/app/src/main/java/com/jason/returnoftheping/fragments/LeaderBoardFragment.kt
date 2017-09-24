@@ -15,9 +15,8 @@ import com.jason.returnoftheping.constants.Constants
 import com.jason.returnoftheping.models.LeaderBoard
 import kotlinx.android.synthetic.main.fragment_leader_board.*
 import kotlinx.android.synthetic.main.leader_board_header.*
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import rx.android.schedulers.AndroidSchedulers
+import rx.schedulers.Schedulers
 
 /**
  * Created by Jason on 9/17/17.
@@ -25,8 +24,8 @@ import retrofit2.Response
 class LeaderBoardFragment : Fragment() {
 
     private val TAG = LeaderBoardFragment::class.java.simpleName
-    private lateinit var app: LOTPApp
     private var mLeaderBoard: LeaderBoard? = null
+    private lateinit var app: LOTPApp
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val root = inflater?.inflate(R.layout.fragment_leader_board, container, false)
@@ -37,6 +36,7 @@ class LeaderBoardFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        leader_board_progress?.visibility = View.VISIBLE
         if(savedInstanceState?.containsKey(Constants.EXTRA_LEADERBOARD) == true) {
             mLeaderBoard = savedInstanceState.getSerializable(Constants.EXTRA_LEADERBOARD) as LeaderBoard
             setLeaderBoardVisible()
@@ -53,36 +53,23 @@ class LeaderBoardFragment : Fragment() {
         }
     }
 
-    private fun refreshData() {
-        leader_board_progress?.visibility = View.VISIBLE
-        try {
-            val items = app.getPingPongService().getLeaderBoard()
-            items.enqueue(object : Callback<LeaderBoard> {
-
-                override fun onResponse(leaderBoard: Call<LeaderBoard>, response: Response<LeaderBoard>) {
-                    Log.d(TAG, "Received a leader board!")
-                    if (response.isSuccessful && response.body() != null) {
-                        if (response.body().leaderboard.isNotEmpty()) {
-                            mLeaderBoard = response.body()
-                            setLeaderBoardVisible()
-                            bindLeaderBoard(response.body())
-                        } else {
-                            displayEmptyView()
-                            leader_board_empty.text = getString(R.string.leader_board_empty)
-                        }
+    private fun refreshData(){
+        app.getPingPongService().getLeaderBoard()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({ response ->
+                    if(response.leaderboard.isNotEmpty()){
+                        mLeaderBoard = response
+                        setLeaderBoardVisible()
+                        bindLeaderBoard(response)
                     } else {
                         displayEmptyView()
+                        leader_board_empty.text = getString(R.string.leader_board_empty)
                     }
-                }
-
-                override fun onFailure(call: Call<LeaderBoard>, t: Throwable) {
-                    Log.d(TAG, "FAILURE getting a leader board!!", t.cause)
+                }, { t: Throwable? ->
                     displayEmptyView()
-                }
-            })
-        } catch (e: Exception) {
-            Log.d(TAG, "Exception: ", e.cause)
-        }
+                    Log.d(TAG, "Exception: ", t)
+                } )
     }
 
     private fun displayEmptyView() {

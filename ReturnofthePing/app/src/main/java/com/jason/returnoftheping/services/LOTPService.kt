@@ -6,6 +6,7 @@ import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.Path
+import rx.Observable
 
 
 /**
@@ -14,7 +15,7 @@ import retrofit2.http.Path
 interface LOTPService {
 
     @GET("v1/leaderboard")
-    fun getLeaderBoard(): Call<LeaderBoard>
+    fun getLeaderBoard(): Observable<LeaderBoard>
 
     @POST("v1/signin")
     fun signIn(@Body credentials: Player): Call<Player>
