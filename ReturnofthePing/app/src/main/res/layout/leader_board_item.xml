@@ -22,7 +22,7 @@
 
         <TextView
             android:id="@+id/leader_board_pos"
-            android:layout_width="36dp"
+            android:layout_width="40dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="4dp"
             android:layout_marginTop="4dp"
@@ -39,59 +39,67 @@
 
         <TextView
             android:id="@+id/leader_board_rating"
-            android:layout_width="60dp"
+            android:layout_width="58dp"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:layout_marginTop="4dp"
             android:maxLength="5"
             android:paddingEnd="@dimen/leader_board_padding"
             android:paddingStart="@dimen/leader_board_padding"
             android:text="@{Integer.toString(item.rating)}"
             android:textAlignment="textStart"
-            android:textAppearance="?android:textAppearanceMedium"
+            android:textAppearance="?android:textAppearanceSmall"
             app:layout_constraintStart_toEndOf="@id/leader_board_pos"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="18500" />
 
         <TextView
-            android:id="@+id/leader_board_losses"
-            android:layout_width="56dp"
-            android:layout_height="wrap_content"
-            android:paddingEnd="@dimen/leader_board_padding"
-            android:paddingStart="@dimen/leader_board_padding"
-            android:text="@{Integer.toString(item.losses)}"
-            android:textAlignment="textStart"
-            android:textAppearance="?android:textAppearanceMedium"
-            app:layout_constraintStart_toEndOf="@id/leader_board_rating"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="50" />
-
-        <TextView
             android:id="@+id/leader_board_wins"
-            android:layout_width="56dp"
+            android:layout_width="54dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:maxLength="4"
+            android:layout_marginBottom="4dp"
+            android:layout_marginTop="4dp"
             android:paddingEnd="@dimen/leader_board_padding"
             android:paddingStart="@dimen/leader_board_padding"
             android:text="@{Integer.toString(item.wins)}"
             android:textAlignment="textStart"
-            android:textAppearance="?android:textAppearanceMedium"
-            app:layout_constraintStart_toEndOf="@id/leader_board_losses"
+            android:textAppearance="?android:textAppearanceSmall"
+            app:layout_constraintStart_toEndOf="@id/leader_board_rating"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="10" />
+            tools:text="500" />
+
+        <TextView
+            android:id="@+id/leader_board_losses"
+            android:layout_width="54dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginTop="4dp"
+            android:maxLength="4"
+            android:paddingEnd="@dimen/leader_board_padding"
+            android:paddingStart="@dimen/leader_board_padding"
+            android:text="@{Integer.toString(item.losses)}"
+            android:textAlignment="textStart"
+            android:textAppearance="?android:textAppearanceSmall"
+            app:layout_constraintStart_toEndOf="@id/leader_board_wins"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="100" />
 
         <TextView
             android:id="@+id/leader_board_name"
             android:layout_width="160dp"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:layout_marginTop="4dp"
             android:ellipsize="end"
             android:maxLines="1"
             android:paddingEnd="@dimen/leader_board_padding"
             android:paddingStart="@dimen/leader_board_padding"
             android:text="@{item.name}"
             android:textAlignment="textStart"
-            android:textAppearance="?android:textAppearanceMedium"
+            android:textAppearance="?android:textAppearanceSmall"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/leader_board_wins"
+            app:layout_constraintStart_toEndOf="@id/leader_board_losses"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Jason Joseph Gregory" />
 

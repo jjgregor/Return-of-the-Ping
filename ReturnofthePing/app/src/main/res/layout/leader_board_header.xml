@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/leader_board_header_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal"
-    android:visibility="gone"
     android:paddingBottom="8dp"
-    android:paddingTop="8dp">
+    android:paddingTop="8dp"
+    android:visibility="gone"
+    tools:visibility="visible">
 
     <TextView
         android:id="@+id/leader_board_pos"
@@ -31,25 +33,24 @@
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/leader_board_losses"
+        android:id="@+id/leader_board_wins"
         android:layout_width="56dp"
         android:layout_height="wrap_content"
+        android:maxLength="4"
         android:paddingEnd="@dimen/leader_board_padding"
         android:paddingStart="@dimen/leader_board_padding"
-        android:text="@string/leader_board_losses_lbl"
+        android:text="@string/leader_board_wins_lbl"
         android:textAlignment="textStart"
         android:textAppearance="?android:textAppearanceSmall"
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/leader_board_wins"
-        android:layout_width="56dp"
+        android:id="@+id/leader_board_losses"
+        android:layout_width="60dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:maxLength="4"
         android:paddingEnd="@dimen/leader_board_padding"
         android:paddingStart="@dimen/leader_board_padding"
-        android:text="@string/leader_board_wins_lbl"
+        android:text="@string/leader_board_losses_lbl"
         android:textAlignment="textStart"
         android:textAppearance="?android:textAppearanceSmall"
         android:textStyle="bold" />
