@@ -4,7 +4,6 @@ import android.app.Application
 import android.content.SharedPreferences
 import android.preference.PreferenceManager
 import com.facebook.stetho.okhttp3.StethoInterceptor
-import com.jason.returnoftheping.services.LOTPService
 import com.jason.returnoftheping.util.ObjectMapperFactory
 import dagger.Module
 import dagger.Provides
@@ -60,10 +59,5 @@ class NetworkModule(internal var mBaseUrl: String) {
                 .client(client)
                 .build()
         return retrofit
-    }
-
-    @Provides
-    internal fun provideLOTPService(restAdapter: Retrofit) : LOTPService {
-        return restAdapter.create(LOTPService::class.java)
     }
 }
