@@ -13,10 +13,12 @@ import com.jason.returnoftheping.R
 import com.jason.returnoftheping.adapters.LeaderBoardAdapter
 import com.jason.returnoftheping.constants.Constants
 import com.jason.returnoftheping.models.LeaderBoard
+import com.jason.returnoftheping.services.LOTPService
 import kotlinx.android.synthetic.main.fragment_leader_board.*
 import kotlinx.android.synthetic.main.leader_board_header.*
 import rx.android.schedulers.AndroidSchedulers
 import rx.schedulers.Schedulers
+import javax.inject.Inject
 
 /**
  * Created by Jason on 9/17/17.
@@ -25,17 +27,20 @@ class LeaderBoardFragment : Fragment() {
 
     private val TAG = LeaderBoardFragment::class.java.simpleName
     private var mLeaderBoard: LeaderBoard? = null
-    private lateinit var app: LOTPApp
+
+    @Inject lateinit var service: LOTPService
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val root = inflater?.inflate(R.layout.fragment_leader_board, container, false)
-        app = activity?.application as LOTPApp
 
         return root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        LOTPApp.component.inject(this)
+
+
         leader_board_progress?.visibility = View.VISIBLE
         if(savedInstanceState?.containsKey(Constants.EXTRA_LEADER_BOARD) == true) {
             mLeaderBoard = savedInstanceState.getSerializable(Constants.EXTRA_LEADER_BOARD) as LeaderBoard
@@ -54,7 +59,7 @@ class LeaderBoardFragment : Fragment() {
     }
 
     private fun refreshData(){
-        app.getPingPongService().getLeaderBoard()
+        service.getLeaderBoard()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({ response ->

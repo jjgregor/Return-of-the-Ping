@@ -7,11 +7,11 @@ import com.jason.returnoftheping.LOTPApp
 import com.jason.returnoftheping.R
 import com.jason.returnoftheping.constants.Constants
 import com.jason.returnoftheping.models.SignInRegisterResponse
+import com.jason.returnoftheping.services.LOTPService
 import com.jason.returnoftheping.util.HelperUtil
 import rx.android.schedulers.AndroidSchedulers
 import rx.schedulers.Schedulers
-
-
+import javax.inject.Inject
 
 
 /**
@@ -21,7 +21,8 @@ class SignInFragment : Fragment() {
 
     private val TAG = SignInFragment::class.java.name
     private var callbacks: SignInCallbacks? = null
-    private lateinit var app: LOTPApp
+
+    @Inject lateinit var service: LOTPService
 
     companion object {
         fun newInstance(email: String, password: String): SignInFragment {
@@ -42,7 +43,8 @@ class SignInFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        app = activity?.application as LOTPApp
+        LOTPApp.component.inject(this)
+
         val email = arguments.getString(Constants.EMAIL)
         val password = HelperUtil().sha256(arguments.getString(Constants.PASSWORD)) as String
 
@@ -50,7 +52,7 @@ class SignInFragment : Fragment() {
     }
 
     private fun signIn(email: String, password: String) {
-        app.getPingPongService().signIn(email, password)
+        service.signIn(email, password)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({ response ->
