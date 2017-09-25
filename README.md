@@ -4,4 +4,5 @@ Lord of the Ping rewritten in Kotlin using:
 -RxJava
 -Retrofit 2
 -Dagger 2
+-MP Android Chart
 
