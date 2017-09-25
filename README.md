@@ -1,2 +1,7 @@
 # Return-of-the-Ping
-Lord of the Ping with Ian's new API rewritten in Kotlin
+Lord of the Ping rewritten in Kotlin using:
+- Ian's new API
+-RxJava
+-Retrofit 2
+-Dagger 2
+
