@@ -17,7 +17,7 @@
 
         <TextView
             android:id="@+id/leader_board_pos"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:paddingEnd="4dp"
             android:paddingStart="16dp"
@@ -49,7 +49,7 @@
             <ImageView
                 android:id="@+id/profile_avatar"
                 android:layout_width="match_parent"
-                android:layout_height="48dp"
+                android:layout_height="match_parent"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
                 android:scaleType="centerCrop"
@@ -59,7 +59,7 @@
 
         <TextView
             android:id="@+id/leader_board_name"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
@@ -72,42 +72,40 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:textStyle="bold"
             app:layout_constraintEnd_toStartOf="@+id/leader_board_rating"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/circle_card_view"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             tools:text="Jason Joseph Gregory" />
 
         <TextView
             android:id="@+id/leader_board_wins"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:paddingEnd="@dimen/leader_board_padding"
             android:paddingStart="@dimen/leader_board_padding"
             android:text="@{@string/leader_board_wins_losses(Integer.toString(item.wins), Integer.toString(item.losses))}"
             android:textAppearance="@style/TextAppearance.AppCompat.Small"
-            app:layout_constraintEnd_toStartOf="@+id/leader_board_rating"
-            app:layout_constraintHorizontal_bias="0"
             app:layout_constraintStart_toEndOf="@+id/circle_card_view"
             app:layout_constraintTop_toBottomOf="@+id/leader_board_name"
             tools:text="500 - 100" />
 
         <TextView
             android:id="@+id/leader_board_rating"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
             android:layout_marginTop="8dp"
             android:paddingEnd="16dp"
+            android:textColor="@android:color/black"
             android:paddingStart="@dimen/leader_board_padding"
             android:text="@{Integer.toString(item.rating)}"
-            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="185000" />
+            tools:text="18500" />
 
     </android.support.constraint.ConstraintLayout>
 
