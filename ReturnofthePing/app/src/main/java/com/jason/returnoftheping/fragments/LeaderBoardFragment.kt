@@ -15,7 +15,6 @@ import com.jason.returnoftheping.constants.Constants
 import com.jason.returnoftheping.models.LeaderBoard
 import com.jason.returnoftheping.services.LOTPService
 import kotlinx.android.synthetic.main.fragment_leader_board.*
-import kotlinx.android.synthetic.main.leader_board_header.*
 import rx.android.schedulers.AndroidSchedulers
 import rx.schedulers.Schedulers
 import javax.inject.Inject
@@ -26,7 +25,7 @@ import javax.inject.Inject
 class LeaderBoardFragment : Fragment() {
 
     private val TAG = LeaderBoardFragment::class.java.simpleName
-    private var mLeaderBoard: LeaderBoard? = null
+    private lateinit var mLeaderBoard: LeaderBoard
 
     @Inject lateinit var service: LOTPService
 
@@ -42,7 +41,7 @@ class LeaderBoardFragment : Fragment() {
 
 
         leader_board_progress?.visibility = View.VISIBLE
-        if(savedInstanceState?.containsKey(Constants.EXTRA_LEADER_BOARD) == true) {
+        if (savedInstanceState?.containsKey(Constants.EXTRA_LEADER_BOARD) == true) {
             mLeaderBoard = savedInstanceState.getSerializable(Constants.EXTRA_LEADER_BOARD) as LeaderBoard
             setLeaderBoardVisible()
             bindLeaderBoard(mLeaderBoard)
@@ -58,12 +57,12 @@ class LeaderBoardFragment : Fragment() {
         }
     }
 
-    private fun refreshData(){
+    private fun refreshData() {
         service.getLeaderBoard()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({ response ->
-                    if(response.leaderboard.isNotEmpty()){
+                    if (response.leaderboard.isNotEmpty()) {
                         mLeaderBoard = response
                         setLeaderBoardVisible()
                         bindLeaderBoard(response)
@@ -74,7 +73,7 @@ class LeaderBoardFragment : Fragment() {
                 }, { t: Throwable? ->
                     displayEmptyView()
                     Log.d(TAG, "Exception: ", t)
-                } )
+                })
     }
 
     private fun displayEmptyView() {
@@ -82,18 +81,15 @@ class LeaderBoardFragment : Fragment() {
         leader_board_empty?.visibility = View.VISIBLE
     }
 
-    private fun setLeaderBoardVisible(){
+    private fun setLeaderBoardVisible() {
         leader_board_progress.visibility = View.GONE
-        leader_board_header_container.visibility = View.VISIBLE
         leader_board_recycler.visibility = View.VISIBLE
     }
 
-    private fun bindLeaderBoard(items: LeaderBoard?) {
-        items?.let {
-            leader_board_recycler.addItemDecoration(DividerItemDecoration(context, LinearLayoutManager.VERTICAL))
-            leader_board_recycler.layoutManager = LinearLayoutManager(context)
-            leader_board_recycler.adapter = LeaderBoardAdapter(it.leaderboard)
-        }
+    private fun bindLeaderBoard(items: LeaderBoard) {
+        leader_board_recycler.addItemDecoration(DividerItemDecoration(context, LinearLayoutManager.VERTICAL))
+        leader_board_recycler.layoutManager = LinearLayoutManager(context)
+        leader_board_recycler.adapter = LeaderBoardAdapter(items.leaderboard)
     }
 
 }

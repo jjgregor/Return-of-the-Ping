@@ -10,6 +10,8 @@
     <string name="your_profile_empty_view">Sorry we couldn\'t your profile at this time.</string>
     <string name="title_activity_main">MainActivity</string>
 
+    <string name="leader_board_wins_losses">%s - %s</string>
+
 
     <!-- New Match -->
     <string name="new_match_opponent_lbl">Type their name or email…</string>

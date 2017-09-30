@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -9,99 +9,105 @@
     </data>
 
     <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/leader_board_item_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:paddingBottom="8dp"
-        android:paddingEnd="16dp"
-        android:paddingStart="16dp"
-        android:paddingTop="8dp">
+        android:paddingBottom="4dp"
+        android:paddingTop="4dp">
 
         <TextView
             android:id="@+id/leader_board_pos"
-            android:layout_width="40dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="4dp"
-            android:layout_marginTop="4dp"
-            android:maxLength="3"
-            android:paddingEnd="2dp"
+            android:paddingEnd="4dp"
+            android:paddingStart="16dp"
             android:text="@{Integer.toString(item.rank)}"
-            android:textAlignment="textStart"
-            android:textAppearance="?android:textAppearanceSmall"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="100" />
+            tools:text="1000" />
 
-        <TextView
-            android:id="@+id/leader_board_rating"
-            android:layout_width="58dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="4dp"
-            android:layout_marginTop="4dp"
-            android:maxLength="5"
-            android:paddingEnd="@dimen/leader_board_padding"
-            android:paddingStart="@dimen/leader_board_padding"
-            android:text="@{Integer.toString(item.rating)}"
-            android:textAlignment="textStart"
-            android:textAppearance="?android:textAppearanceSmall"
-            app:layout_constraintStart_toEndOf="@id/leader_board_pos"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="18500" />
+        <android.support.v7.widget.CardView
+            android:id="@+id/circle_card_view"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:elevation="12dp"
+            android:innerRadius="0dp"
+            android:shape="ring"
+            android:thicknessRatio="1.9"
+            app:cardCornerRadius="24dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/leader_board_pos"
+            app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/leader_board_wins"
-            android:layout_width="54dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="4dp"
-            android:layout_marginTop="4dp"
-            android:paddingEnd="@dimen/leader_board_padding"
-            android:paddingStart="@dimen/leader_board_padding"
-            android:text="@{Integer.toString(item.wins)}"
-            android:textAlignment="textStart"
-            android:textAppearance="?android:textAppearanceSmall"
-            app:layout_constraintStart_toEndOf="@id/leader_board_rating"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="500" />
+            <ImageView
+                android:id="@+id/profile_avatar"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/return_of_the_king" />
 
-        <TextView
-            android:id="@+id/leader_board_losses"
-            android:layout_width="54dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="4dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginTop="4dp"
-            android:maxLength="4"
-            android:paddingEnd="@dimen/leader_board_padding"
-            android:paddingStart="@dimen/leader_board_padding"
-            android:text="@{Integer.toString(item.losses)}"
-            android:textAlignment="textStart"
-            android:textAppearance="?android:textAppearanceSmall"
-            app:layout_constraintStart_toEndOf="@id/leader_board_wins"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="100" />
+        </android.support.v7.widget.CardView>
 
         <TextView
             android:id="@+id/leader_board_name"
-            android:layout_width="160dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="4dp"
-            android:layout_marginTop="4dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
             android:ellipsize="end"
             android:maxLines="1"
             android:paddingEnd="@dimen/leader_board_padding"
             android:paddingStart="@dimen/leader_board_padding"
             android:text="@{item.name}"
-            android:textAlignment="textStart"
-            android:textAppearance="?android:textAppearanceSmall"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/leader_board_losses"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/leader_board_rating"
+            app:layout_constraintStart_toEndOf="@+id/circle_card_view"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             tools:text="Jason Joseph Gregory" />
+
+        <TextView
+            android:id="@+id/leader_board_wins"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:paddingEnd="@dimen/leader_board_padding"
+            android:paddingStart="@dimen/leader_board_padding"
+            android:text="@{@string/leader_board_wins_losses(Integer.toString(item.wins), Integer.toString(item.losses))}"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            app:layout_constraintEnd_toStartOf="@+id/leader_board_rating"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintStart_toEndOf="@+id/circle_card_view"
+            app:layout_constraintTop_toBottomOf="@+id/leader_board_name"
+            tools:text="500 - 100" />
+
+        <TextView
+            android:id="@+id/leader_board_rating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp"
+            android:paddingEnd="16dp"
+            android:paddingStart="@dimen/leader_board_padding"
+            android:text="@{Integer.toString(item.rating)}"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="185000" />
 
     </android.support.constraint.ConstraintLayout>
 
