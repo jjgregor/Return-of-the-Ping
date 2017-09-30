@@ -66,6 +66,7 @@
             android:layout_marginTop="8dp"
             android:ellipsize="end"
             android:maxLines="1"
+            android:textColor="@color/colorPrimaryDark"
             android:paddingEnd="@dimen/leader_board_padding"
             android:paddingStart="@dimen/leader_board_padding"
             android:text="@{item.name}"
