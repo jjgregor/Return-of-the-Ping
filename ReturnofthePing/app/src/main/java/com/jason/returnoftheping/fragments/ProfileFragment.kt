@@ -31,8 +31,6 @@ import rx.schedulers.Schedulers
 import javax.inject.Inject
 
 
-
-
 /**
  * Created by Jason on 9/24/17.
  */
@@ -132,7 +130,7 @@ class ProfileFragment : Fragment() {
         matchEntries.add(PieEntry((100 - (profile?.stats?.matchWinPercentage ?: 0)).toFloat(), "Losses"))
 
         val gameEntries = ArrayList<PieEntry>()
-        gameEntries.add(PieEntry((profile?.stats?.gameWinPercentage?: 0).toFloat(), "Wins"))
+        gameEntries.add(PieEntry((profile?.stats?.gameWinPercentage ?: 0).toFloat(), "Wins"))
         gameEntries.add(PieEntry((100 - (profile?.stats?.gameWinPercentage ?: 0)).toFloat(), "Losses"))
 
         val colors = ArrayList<Int>()
