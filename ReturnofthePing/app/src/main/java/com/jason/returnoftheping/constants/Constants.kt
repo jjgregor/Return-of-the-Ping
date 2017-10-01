@@ -11,4 +11,5 @@ object Constants {
     val STATE_PROFILE = "profile"
     val MATCHES = "matches"
     val STATS = "stats"
+    val PROFILE = "profile"
 }

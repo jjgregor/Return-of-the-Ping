@@ -6,10 +6,10 @@ import java.io.Serializable
  * Created by Jason on 9/7/17.
  */
 data class Player(
-        var id: String,
+        var id: Long,
         var name: String,
-        var email: String,
+        var email: String?,
         val pushNotificationsEnabled: Boolean = true,
         val emailNotificationsEnabled: Boolean = true,
         var rating: String,
-        var avatarUrl: String?) : Serializable
+        var gravatarImageUrl: String?) : Serializable

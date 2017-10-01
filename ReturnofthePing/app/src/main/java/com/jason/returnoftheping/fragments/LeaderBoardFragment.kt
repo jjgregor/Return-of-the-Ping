@@ -39,7 +39,6 @@ class LeaderBoardFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         LOTPApp.component.inject(this)
 
-
         leader_board_progress?.visibility = View.VISIBLE
         if (savedInstanceState?.containsKey(Constants.EXTRA_LEADER_BOARD) == true) {
             mLeaderBoard = savedInstanceState.getSerializable(Constants.EXTRA_LEADER_BOARD) as LeaderBoard

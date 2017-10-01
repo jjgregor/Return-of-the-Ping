@@ -26,8 +26,8 @@ interface LOTPService {
     @POST("v1/forgotPassword")
     fun forgotPassword(@Body email: String)
 
-    @GET("v1/profile/{id}")
-    fun getProfile(@Path("id") playerId: Long): Observable<Profile>
+    @GET("v1/profile/{profileId}")
+    fun getProfile(@Path("profileId") playerId: Long): Observable<Profile>
 
     @GET("v1/history/{opponentId}")
     fun getHistory(@Path("opponentId") opponentId: Int): Observable<Player>

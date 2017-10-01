@@ -4,6 +4,8 @@ import android.databinding.DataBindingUtil
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.jason.returnoftheping.R
 import com.jason.returnoftheping.databinding.LeaderBoardItemBinding
 import com.jason.returnoftheping.models.LeaderBoardItem
@@ -25,6 +27,12 @@ class LeaderBoardAdapter(val items: List<LeaderBoardItem>) : RecyclerView.Adapte
 
         fun bindItem(item: LeaderBoardItem) {
             binding.item = item
+            item.gravatarImageUrl?.let {
+                Glide.with(itemView.context)
+                        .load(it)
+                        .apply(RequestOptions().centerCrop())
+                        .into(binding.profileAvatar)
+            }
         }
     }
 }

@@ -10,4 +10,5 @@ data class LeaderBoardItem(var rating: Int,
                            var name: String,
                            var profileId: Int,
                            var losses: Int,
-                           var rank: Int) : Serializable
+                           var rank: Int,
+                           var gravatarImageUrl: String?) : Serializable

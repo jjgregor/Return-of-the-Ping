@@ -27,9 +27,8 @@ import org.apache.commons.validator.routines.EmailValidator
 class AuthFragment : Fragment(), SignInFragment.SignInCallbacks {
 
     val TAG = AuthFragment::class.java.name
-    private lateinit var app: LOTPApp
     private var callBacks: AuthCallbacks? = null
-
+    private lateinit var app: LOTPApp
 
     interface AuthCallbacks {
         fun playerSignedIn(player: Player)
@@ -37,10 +36,7 @@ class AuthFragment : Fragment(), SignInFragment.SignInCallbacks {
         fun authCancelled()
     }
 
-    fun setAuthCallbacks(callback: AuthCallbacks) {
-        callBacks = callback
-    }
-
+    fun setAuthCallbacks(callback: AuthCallbacks) { callBacks = callback }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val root = inflater?.inflate(R.layout.fragment_auth, container, false)
@@ -186,7 +182,7 @@ class AuthFragment : Fragment(), SignInFragment.SignInCallbacks {
         Preferences().setCurrentPlayer(response.player, activity)
         app.setCurrentPlayer(response.player)
 
-        val profileFragment = ProfileFragment.newInstance(response)
+        val profileFragment = ProfileFragment.newInstance(response.player)
         fragmentManager
                 .beginTransaction()
                 .remove(this)

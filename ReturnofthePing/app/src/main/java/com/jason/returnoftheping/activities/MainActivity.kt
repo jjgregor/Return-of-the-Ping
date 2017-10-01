@@ -9,6 +9,8 @@ import com.jason.returnoftheping.LOTPApp
 import com.jason.returnoftheping.R
 import com.jason.returnoftheping.fragments.AuthFragment
 import com.jason.returnoftheping.fragments.LeaderBoardFragment
+import com.jason.returnoftheping.fragments.ProfileFragment
+import com.jason.returnoftheping.models.Player
 import kotlinx.android.synthetic.main.activity_main.*
 
 
@@ -29,7 +31,11 @@ class MainActivity : AppCompatActivity() {
     private fun setupViewPager() {
         val adapter: ViewPagerAdapter = ViewPagerAdapter(supportFragmentManager)
         adapter.addFragment(LeaderBoardFragment(), "Leader Board")
-        adapter.addFragment(AuthFragment(), "Profile")
+        if(app.getCurrentPlayer() == null){
+            adapter.addFragment(AuthFragment(), "Profile")
+        } else {
+            adapter.addFragment(ProfileFragment.newInstance(app.getCurrentPlayer() as Player), "Profile")
+        }
         tabs.setupWithViewPager(viewpager)
         viewpager.adapter = adapter
     }
