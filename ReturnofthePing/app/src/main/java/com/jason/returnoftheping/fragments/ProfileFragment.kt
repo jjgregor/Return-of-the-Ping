@@ -5,6 +5,8 @@ import android.graphics.Typeface
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.content.ContextCompat
+import android.support.v7.widget.DividerItemDecoration
+import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -18,6 +20,7 @@ import com.github.mikephil.charting.formatter.PercentFormatter
 import com.github.mikephil.charting.utils.MPPointF
 import com.jason.returnoftheping.LOTPApp
 import com.jason.returnoftheping.R
+import com.jason.returnoftheping.adapters.MatchHistoryAdapter
 import com.jason.returnoftheping.constants.Constants
 import com.jason.returnoftheping.models.Player
 import com.jason.returnoftheping.models.Profile
@@ -91,13 +94,11 @@ class ProfileFragment : Fragment() {
                     .into(profile_avatar)
         }
 
-        bindMatchTotals();
-        bindGameTotals();
-        bindMatchHistory();
-
+        bindGraphs()
+        bindMatchHistory()
     }
 
-    private fun bindMatchTotals() {
+    private fun bindGraphs() {
         profile_matches_graph.setCenterTextTypeface(Typeface.DEFAULT_BOLD)
         profile_matches_graph.dragDecelerationFrictionCoef = 0.95f
         profile_matches_graph.centerText = profile?.stats?.matchCount.toString() + "\n Matches"
@@ -167,12 +168,11 @@ class ProfileFragment : Fragment() {
     }
 
     private fun bindMatchHistory() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
-
-    private fun bindGameTotals() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        match_history_recycler.isNestedScrollingEnabled = false
+        match_history_recycler.addItemDecoration(DividerItemDecoration(context, LinearLayoutManager.VERTICAL))
+        match_history_recycler.layoutManager = LinearLayoutManager(context)
+        match_history_recycler.setHasFixedSize(true)
+        match_history_recycler.adapter = MatchHistoryAdapter(profile?.matches ?: ArrayList())
     }
 }
 

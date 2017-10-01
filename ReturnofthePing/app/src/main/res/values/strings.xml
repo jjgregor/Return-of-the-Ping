@@ -12,7 +12,6 @@
 
     <string name="leader_board_wins_losses">%s - %s</string>
 
-
     <!-- New Match -->
     <string name="new_match_opponent_lbl">Type their name or email…</string>
     <string name="new_match_your_wins_lbl">Games You Won</string>

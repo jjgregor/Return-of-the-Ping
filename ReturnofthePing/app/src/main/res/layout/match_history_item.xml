@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="match"
+            type="com.jason.returnoftheping.models.Match" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="4dp">
+
+        <TextView
+            android:id="@+id/match_history_date"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="8dp"
+            android:text="@{match.date}"
+            android:textAppearance="?android:textAppearanceMedium"
+            android:textColor="@android:color/darker_gray"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="12/3/16" />
+
+        <TextView
+            android:id="@+id/match_history_opponent"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="@{match.playerOneName}"
+            android:textAppearance="?android:textAppearanceMedium"
+            app:layout_constraintBaseline_toBaselineOf="@+id/match_history_date"
+            app:layout_constraintEnd_toStartOf="@+id/match_history_result"
+            app:layout_constraintStart_toEndOf="@+id/match_history_date"
+            tools:text="Jason Gregory" />
+
+        <TextView
+            android:id="@+id/match_history_result"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:padding="4dp"
+            android:textAppearance="?android:textAppearanceMediumInverse"
+            app:layout_constraintBaseline_toBaselineOf="@+id/match_history_opponent"
+            app:layout_constraintEnd_toStartOf="@+id/match_history_score"
+            tools:text="W" />
+
+        <TextView
+            android:id="@+id/match_history_score"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:text="@{@string/leader_board_wins_losses(Integer.toString(match.playerOneWins), Integer.toString(match.playerTwoWins))}"
+            android:textAppearance="?android:textAppearanceMedium"
+            app:layout_constraintBaseline_toBaselineOf="@+id/match_history_result"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="3-2" />
+
+    </android.support.constraint.ConstraintLayout>
+</layout>
