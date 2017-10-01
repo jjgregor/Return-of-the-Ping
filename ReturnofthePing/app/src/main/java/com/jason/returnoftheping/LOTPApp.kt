@@ -17,11 +17,11 @@ import com.jason.returnoftheping.preferences.Preferences
 class LOTPApp : Application() {
 
     private val TAG = LOTPApp::class.java.simpleName
-    private var currentPlayer: Player? = null
 
     companion object {
         @JvmStatic
         lateinit var component: AppComponent
+        var currentPlayer: Player? = null
     }
 
     override fun onCreate() {
@@ -29,21 +29,21 @@ class LOTPApp : Application() {
         component = DaggerAppComponent
                 .builder()
                 .appModule(AppModule(this))
-                .networkModule(NetworkModule(getString(R.string.api_domain)))
+                .networkModule(NetworkModule(getString(R.string.api_domain), applicationContext))
                 .build()
 
         component.inject(this)
-        currentPlayer = Preferences().getCurrentPlayer(this)
-        Log.d(TAG, "CurrentPlayer: " + currentPlayer)
+        Companion.currentPlayer = Preferences().getCurrentPlayer(this)
+        Log.d(TAG, "CurrentPlayer: " + Companion.currentPlayer)
 
         Stetho.initializeWithDefaults(this)
     }
 
 
-    fun getCurrentPlayer() = currentPlayer
+    fun getCurrentPlayer() = Companion.currentPlayer
 
     fun setCurrentPlayer(player: Player) {
-        currentPlayer = player
+        Companion.currentPlayer = player
     }
 
 

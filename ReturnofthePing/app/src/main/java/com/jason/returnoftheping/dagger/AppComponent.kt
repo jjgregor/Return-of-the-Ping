@@ -2,6 +2,7 @@ package com.jason.returnoftheping.dagger
 
 import com.jason.returnoftheping.LOTPApp
 import com.jason.returnoftheping.activities.MainActivity
+import com.jason.returnoftheping.fragments.InboxFragment
 import com.jason.returnoftheping.fragments.LeaderBoardFragment
 import com.jason.returnoftheping.fragments.ProfileFragment
 import com.jason.returnoftheping.fragments.SignInFragment
@@ -27,4 +28,6 @@ interface AppComponent {
     fun inject(app: LOTPApp)
 
     fun inject(profileFragment: ProfileFragment)
+
+    fun inject(inboxFragment: InboxFragment)
 }

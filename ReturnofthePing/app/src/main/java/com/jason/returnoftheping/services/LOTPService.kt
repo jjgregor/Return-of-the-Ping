@@ -17,6 +17,12 @@ interface LOTPService {
     @POST("v1/signin")
     fun signIn(@Field("email") email: String, @Field("password") password: String): Observable<SignInRegisterResponse>
 
+    @GET("v1/profile/{profileId}")
+    fun getProfile(@Path("profileId") playerId: Long): Observable<Profile>
+
+    @GET("v1/pendingMatches")
+    fun getPendingMatches(): Observable<PendingMatchesResponse>
+
     @POST("v1/register")
     fun register(@Body credentials: Player): Observable<Player>
 
@@ -25,9 +31,6 @@ interface LOTPService {
 
     @POST("v1/forgotPassword")
     fun forgotPassword(@Body email: String)
-
-    @GET("v1/profile/{profileId}")
-    fun getProfile(@Path("profileId") playerId: Long): Observable<Profile>
 
     @GET("v1/history/{opponentId}")
     fun getHistory(@Path("opponentId") opponentId: Int): Observable<Player>
@@ -38,9 +41,6 @@ interface LOTPService {
     @POST("v1/match")
     fun saveMatch(@Body match: Match): Observable<String>
 
-    @GET("v1/pendingMatches")
-    fun getPendingMatches(@Path("id") playerId: Long): Observable<List<Match>>
-
     @POST("v1/pendingMatch")
-    fun confirmMatch(@Body response: MatchConfirmResponse): Observable<MatchConfirmResponse>
+    fun confirmMatch(@Body response: MatchConfirmationRequest): Observable<MatchConfirmationRequest>
 }

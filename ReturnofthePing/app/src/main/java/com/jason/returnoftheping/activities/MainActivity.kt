@@ -5,19 +5,24 @@ import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
 import android.support.v7.app.AppCompatActivity
+import android.util.Log
 import com.jason.returnoftheping.LOTPApp
 import com.jason.returnoftheping.R
 import com.jason.returnoftheping.fragments.AuthFragment
+import com.jason.returnoftheping.fragments.InboxFragment
 import com.jason.returnoftheping.fragments.LeaderBoardFragment
 import com.jason.returnoftheping.fragments.ProfileFragment
 import com.jason.returnoftheping.models.Player
 import kotlinx.android.synthetic.main.activity_main.*
+import java.io.Serializable
+import java.util.*
 
 
+class MainActivity : AppCompatActivity(), AuthFragment.AuthCallbacks {
 
-class MainActivity : AppCompatActivity() {
-
+    val TAG = MainActivity::class.java.name
     private lateinit var app: LOTPApp
+    private lateinit var adapter: ViewPagerAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,36 +34,41 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupViewPager() {
-        val adapter: ViewPagerAdapter = ViewPagerAdapter(supportFragmentManager)
+        adapter = ViewPagerAdapter(supportFragmentManager)
         adapter.addFragment(LeaderBoardFragment(), "Leader Board")
-        if(app.getCurrentPlayer() == null){
-            adapter.addFragment(AuthFragment(), "Profile")
+        if (app.getCurrentPlayer() == null) {
+            val authFrag: AuthFragment = AuthFragment()
+            authFrag.setAuthCallbacks(this)
+            adapter.addFragment(authFrag, "Profile")
         } else {
             adapter.addFragment(ProfileFragment.newInstance(app.getCurrentPlayer() as Player), "Profile")
+            adapter.addFragment(InboxFragment(), "Inbox")
         }
         tabs.setupWithViewPager(viewpager)
         viewpager.adapter = adapter
     }
 
-    private inner class ViewPagerAdapter(manager: FragmentManager) : FragmentPagerAdapter(manager) {
+    private inner class ViewPagerAdapter(manager: FragmentManager) : FragmentPagerAdapter(manager), Serializable {
         private val mFragmentList = ArrayList<Fragment>()
         private val mFragmentTitleList = ArrayList<String>()
 
-        override fun getItem(position: Int): Fragment {
-            return mFragmentList.get(position)
-        }
+        override fun getItem(position: Int): Fragment = mFragmentList[position]
 
-        override fun getCount(): Int {
-            return mFragmentList.size
-        }
+        override fun getCount(): Int = mFragmentList.size
 
         fun addFragment(fragment: Fragment, title: String) {
             mFragmentList.add(fragment)
             mFragmentTitleList.add(title)
         }
 
-        override fun getPageTitle(position: Int): CharSequence {
-            return mFragmentTitleList.get(position)
-        }
+        override fun getPageTitle(position: Int): CharSequence = mFragmentTitleList[position]
     }
+
+    override fun playerSignedIn(player: Player) {
+        adapter.addFragment(InboxFragment(), "Inbox")
+        adapter.notifyDataSetChanged()
+    }
+
+    override fun authCancelled() { Log.i(TAG, "sign in failed") }
+
 }

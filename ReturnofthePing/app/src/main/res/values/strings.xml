@@ -4,7 +4,7 @@
 
     <string name="api_domain">https://zappos.lordoftheping.com/api/</string>
 
-    <string name="leader_board_empty_error">Sorry we couldn\'t the leader board at this time.</string>
+    <string name="leader_board_empty_error">Sorry we couldn\'t load the leader board at this time.</string>
     <string name="leader_board_empty">There is currently nobody on the leader board, go play!</string>
     <string name="player_profile_empty_view">Sorry we couldn\'t this profile at this time.</string>
     <string name="your_profile_empty_view">Sorry we couldn\'t your profile at this time.</string>
@@ -57,7 +57,8 @@
     <string name="confirm_match">Confirm Match</string>
     <string name="decline_btn_txt">decline</string>
     <string name="confirm_btn_txt">confirm</string>
-    <string name="inbox_empty_view">Sorry we couldn\'t load your inbox at this time.</string>
+    <string name="inbox_error_message">Sorry we couldn\'t load your inbox at this time.</string>
+    <string name="inbox_empty_view">You don\'t have any messages at this time.</string>
     <string name="please_sign_in">Please sign in to view your inbox.</string>
     <string name="leader_board_rank_lbl">Rank</string>
     <string name="leader_board_rating_lbl">Rating</string>

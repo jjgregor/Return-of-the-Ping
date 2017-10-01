@@ -12,4 +12,5 @@ object Constants {
     val MATCHES = "matches"
     val STATS = "stats"
     val PROFILE = "profile"
+    val VIEW_PAGER_OUT = "view-pager-out"
 }

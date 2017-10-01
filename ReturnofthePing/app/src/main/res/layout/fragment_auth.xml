@@ -55,7 +55,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/sign_in_lbl"
                 android:textColor="@android:color/white"
-                android:theme="@style/MyButton" />
+                android:theme="@style/Button" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -70,7 +70,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/register_lbl"
                 android:textColor="@android:color/white"
-                android:theme="@style/MyButton" />
+                android:theme="@style/Button" />
 
         </LinearLayout>
 
@@ -128,7 +128,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/register_lbl"
                 android:textColor="@android:color/white"
-                android:theme="@style/MyButton" />
+                android:theme="@style/Button" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -144,7 +144,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/sign_in_lbl"
                 android:textColor="@android:color/white"
-                android:theme="@style/MyButton" />
+                android:theme="@style/Button" />
 
         </LinearLayout>
 
@@ -199,7 +199,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:text="@string/try_again_btn_lbl"
-                android:theme="@style/MyButton" />
+                android:theme="@style/Button" />
 
         </LinearLayout>
 

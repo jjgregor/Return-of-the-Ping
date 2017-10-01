@@ -17,6 +17,7 @@ class Preferences {
     private val TAG = Preferences::class.java.simpleName
     private val SHARED_PREFS = "ping_pong_shared_prefs"
     private val CURRENT_PLAYER = "current_player"
+    private val ACCESS_TOKEN = "access_token"
 
     fun getCurrentPlayer(context: Context): Player? {
         val player = getSharedPreferences(context).getString(CURRENT_PLAYER, null)
@@ -42,7 +43,32 @@ class Preferences {
             Log.e(TAG, "Error setting current player", e)
             return false
         }
+    }
 
+    fun getAccessToken(context: Context): String? {
+        val token = getSharedPreferences(context).getString(ACCESS_TOKEN, null)
+        if (!token.isNullOrEmpty()) {
+            try {
+                return token
+            } catch (e: IOException) {
+                Log.e(TAG, "Error getting current player", e)
+            }
+
+        }
+        return null
+    }
+
+    fun setAccessToken(accessToken: String, context: Context): Boolean {
+        try {
+            getSharedPreferences(context)
+                    .edit()
+                    .putString(ACCESS_TOKEN, accessToken)
+                    .apply()
+            return true
+        } catch (e: JsonProcessingException) {
+            Log.e(TAG, "Error setting current player", e)
+            return false
+        }
     }
 
     fun signOut(context: Context) {

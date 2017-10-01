@@ -10,5 +10,6 @@ data class Match(val playerOneId: Int,
                  val playerOneWins: Int,
                  val date: String,
                  val id: Int,
+                 val playerTwoId: Int,
                  val playerOneName: String,
                  val playerTwoName: String) : Serializable

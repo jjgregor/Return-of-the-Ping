@@ -1,9 +1,11 @@
 package com.jason.returnoftheping.dagger
 
 import android.app.Application
+import android.content.Context
 import android.content.SharedPreferences
 import android.preference.PreferenceManager
 import com.facebook.stetho.okhttp3.StethoInterceptor
+import com.jason.returnoftheping.preferences.Preferences
 import com.jason.returnoftheping.util.ObjectMapperFactory
 import dagger.Module
 import dagger.Provides
@@ -19,7 +21,7 @@ import javax.inject.Singleton
  * Created by Jason on 9/24/17.
  */
 @Module
-class NetworkModule(internal var mBaseUrl: String) {
+class NetworkModule(internal val mBaseUrl: String, internal val context: Context) {
 
     @Provides
     @Singleton
@@ -42,6 +44,7 @@ class NetworkModule(internal var mBaseUrl: String) {
                 .addInterceptor { chain ->
                     val ongoing = chain.request().newBuilder()
                     ongoing.addHeader("X-LOTP-API-KEY", "e7ee2d6e0118578da9ada86e8c93ba3313793a0cf7e0b333fa90b996b1fc9581")
+                    Preferences().getAccessToken(context)?.let { ongoing.addHeader("X-LOTP-ACCESS-TOKEN", it) }
                     chain.proceed(ongoing.build())
                 }
                 .addNetworkInterceptor(StethoInterceptor())

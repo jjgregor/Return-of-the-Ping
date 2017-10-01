@@ -180,13 +180,13 @@ class AuthFragment : Fragment(), SignInFragment.SignInCallbacks {
 
     private fun playerSignedIn(response: SignInRegisterResponse) {
         Preferences().setCurrentPlayer(response.player, activity)
+        Preferences().setAccessToken(response.accessToken, activity)
         app.setCurrentPlayer(response.player)
 
-        val profileFragment = ProfileFragment.newInstance(response.player)
         fragmentManager
                 .beginTransaction()
                 .remove(this)
-                .add(profileFragment, "profile_fragment")
+                .add(ProfileFragment.newInstance(response.player), "profile_fragment")
                 .commit()
 
         callBacks?.let { it.playerSignedIn(response.player) }
