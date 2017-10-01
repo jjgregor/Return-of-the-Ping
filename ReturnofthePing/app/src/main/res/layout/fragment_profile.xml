@@ -1,47 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main_content"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:divider="?android:listDivider"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/profile_first_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:padding="16dp"
+            android:text="Jason"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@android:color/black"
+            android:textStyle="bold"
+            app:layout_constraintBaseline_toBaselineOf="@+id/profile_last_name"
+            app:layout_constraintEnd_toStartOf="@id/circle_card_view"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <android.support.v7.widget.CardView
             android:id="@+id/circle_card_view"
-            android:layout_width="160dp"
-            android:layout_height="160dp"
-            android:layout_centerHorizontal="true"
-            android:layout_gravity="center"
-            android:layout_marginBottom="8dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_marginTop="8dp"
             android:elevation="12dp"
             android:innerRadius="0dp"
             android:shape="ring"
             android:thicknessRatio="1.9"
-            app:cardCornerRadius="80dp">
+            app:cardCornerRadius="20dp"
+            app:layout_constraintEnd_toStartOf="@id/profile_last_name"
+            app:layout_constraintStart_toEndOf="@+id/profile_first_name"
+            app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
                 android:id="@+id/profile_avatar"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"
                 android:scaleType="centerCrop"
                 tools:src="@drawable/return_of_the_king" />
 
         </android.support.v7.widget.CardView>
 
-        <LinearLayout
+        <TextView
+            android:id="@+id/profile_last_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:padding="16dp"
+            android:text="Gregory"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@android:color/black"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/circle_card_view"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/title_div"
             android:layout_width="match_parent"
-            android:layout_height="180dp"
-            android:paddingBottom="8dp">
+            android:layout_height="1dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp"
+            android:background="?android:listDivider"
+            app:layout_constraintTop_toBottomOf="@id/circle_card_view" />
+
+        <LinearLayout
+            android:id="@+id/graphs_container"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:paddingBottom="4dp"
+            android:paddingTop="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/title_div">
 
             <com.github.mikephil.charting.charts.PieChart
                 android:id="@+id/profile_matches_graph"
@@ -58,33 +103,45 @@
         </LinearLayout>
 
         <View
+            android:id="@+id/match_top_div"
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="?android:listDivider" />
+            android:background="?android:listDivider"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/graphs_container" />
 
         <TextView
+            android:id="@+id/match_history_label"
             style="?android:actionBarTabTextStyle"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:gravity="center"
             android:padding="4dp"
             android:text="@string/profile_match_history_lbl"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@color/colorPrimary"
             android:textStyle="bold"
-            android:textColor="@android:color/black"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/match_top_div" />
 
         <View
+            android:id="@+id/match_bottom_div"
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="?android:listDivider" />
+            android:background="?android:listDivider"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/match_history_label" />
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/match_history_recycler"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/match_bottom_div" />
 
-        </android.support.v7.widget.RecyclerView>
-
-    </LinearLayout>
-
+    </android.support.constraint.ConstraintLayout>
 </android.support.v4.widget.NestedScrollView>
