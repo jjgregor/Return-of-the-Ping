@@ -100,7 +100,7 @@ class ProfileFragment : Fragment() {
     private fun bindMatchTotals() {
         profile_matches_graph.setCenterTextTypeface(Typeface.DEFAULT_BOLD)
         profile_matches_graph.dragDecelerationFrictionCoef = 0.95f
-        profile_matches_graph.centerText = profile?.stats?.matchCount.toString() + " Matches"
+        profile_matches_graph.centerText = profile?.stats?.matchCount.toString() + "\n Matches"
         profile_matches_graph.isDrawHoleEnabled = true
         profile_matches_graph.setHoleColor(Color.WHITE)
         profile_matches_graph.transparentCircleRadius = 0f
@@ -114,7 +114,7 @@ class ProfileFragment : Fragment() {
 
         profile_games_graph.setCenterTextTypeface(Typeface.DEFAULT_BOLD)
         profile_games_graph.dragDecelerationFrictionCoef = 0.95f
-        profile_games_graph.centerText = profile?.stats?.matchCount.toString() + " Matches"
+        profile_games_graph.centerText = profile?.stats?.gameCount.toString() + " \n Games"
         profile_games_graph.isDrawHoleEnabled = true
         profile_games_graph.setHoleColor(Color.WHITE)
         profile_games_graph.transparentCircleRadius = 0f
