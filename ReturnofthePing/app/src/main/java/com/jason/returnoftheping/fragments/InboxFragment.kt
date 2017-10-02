@@ -73,8 +73,6 @@ class InboxFragment : Fragment() {
         inbox_recycler.adapter = InboxAdapter(messages, object : OnMatchConfirmationItemClickedListener {
             override fun onItemClicked(item: MatchConfirmationRequest)  = sendMatchConfirmation(item)
         })
-
-
     }
 
     private fun sendMatchConfirmation(item: MatchConfirmationRequest) {

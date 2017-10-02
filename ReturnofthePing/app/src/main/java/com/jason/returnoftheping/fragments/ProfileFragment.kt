@@ -46,7 +46,6 @@ class ProfileFragment : Fragment() {
         fun newInstance(player: Player): ProfileFragment {
             val args = Bundle()
             args.putSerializable(Constants.PLAYER, player)
-
             val fragment = ProfileFragment()
             fragment.arguments = args
             return fragment
@@ -57,19 +56,13 @@ class ProfileFragment : Fragment() {
         return inflater?.inflate(R.layout.fragment_profile, container, false)
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         LOTPApp.component.inject(this)
 
         player = arguments.getSerializable(Constants.PLAYER) as Player
-        profile = savedInstanceState?.get(Constants.PROFILE) as? Profile
 
-        if (profile == null) {
-            refreshData()
-        } else {
-            bindProfile()
-        }
-
+        refreshData()
     }
 
     private fun refreshData() {
@@ -81,7 +74,10 @@ class ProfileFragment : Fragment() {
                         profile = it
                         bindProfile()
                     }
-                }, { t: Throwable? -> Log.d(TAG, "Error retrieving profile: ", t) })
+                }, {
+                    t: Throwable? ->
+                    Log.d(TAG, "Error retrieving profile: ", t)
+                })
     }
 
     private fun bindProfile() {

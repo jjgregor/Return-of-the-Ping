@@ -51,9 +51,8 @@ class Preferences {
             try {
                 return token
             } catch (e: IOException) {
-                Log.e(TAG, "Error getting current player", e)
+                Log.e(TAG, "Error getting access token ", e)
             }
-
         }
         return null
     }

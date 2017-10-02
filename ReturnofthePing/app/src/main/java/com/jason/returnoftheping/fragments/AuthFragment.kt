@@ -186,11 +186,12 @@ class AuthFragment : Fragment(), SignInFragment.SignInCallbacks {
         fragmentManager
                 .beginTransaction()
                 .remove(this)
-                .add(ProfileFragment.newInstance(response.player), "profile_fragment")
-                .commit()
+//                .add(ProfileFragment.newInstance(response.player), "profile_fragment")
+                .commitAllowingStateLoss()
 
         callBacks?.let { it.playerSignedIn(response.player) }
         view?.let { Snackbar.make(it, getString(R.string.sign_in_successful), Snackbar.LENGTH_LONG).show() }
+
     }
 
     override fun signInFailed(error: String) {
