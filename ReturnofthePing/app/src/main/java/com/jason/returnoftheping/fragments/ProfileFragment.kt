@@ -159,6 +159,8 @@ class ProfileFragment : Fragment() {
 
         profile_matches_graph.data = matchesData
         profile_games_graph.data = gamesData
+
+        graphs_container.visibility = View.VISIBLE
     }
 
     private fun bindMatchHistory() {

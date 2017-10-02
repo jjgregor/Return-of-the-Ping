@@ -84,9 +84,11 @@
             android:layout_height="200dp"
             android:paddingBottom="4dp"
             android:paddingTop="4dp"
+            android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/title_div">
+            app:layout_constraintTop_toBottomOf="@id/title_div"
+            tools:visibility="visible">
 
             <com.github.mikephil.charting.charts.PieChart
                 android:id="@+id/profile_matches_graph"
