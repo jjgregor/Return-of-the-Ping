@@ -65,7 +65,6 @@ class MainActivity : AppCompatActivity(), AuthFragment.AuthCallbacks {
     }
 
     override fun playerSignedIn(player: Player) {
-        //adapter.addFragment(InboxFragment(), "Inbox")
         setupViewPager()
         adapter.notifyDataSetChanged()
     }

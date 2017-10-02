@@ -186,7 +186,6 @@ class AuthFragment : Fragment(), SignInFragment.SignInCallbacks {
         fragmentManager
                 .beginTransaction()
                 .remove(this)
-//                .add(ProfileFragment.newInstance(response.player), "profile_fragment")
                 .commitAllowingStateLoss()
 
         callBacks?.let { it.playerSignedIn(response.player) }
