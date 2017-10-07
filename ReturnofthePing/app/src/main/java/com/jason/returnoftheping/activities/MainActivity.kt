@@ -21,6 +21,7 @@ import java.util.*
 class MainActivity : AppCompatActivity(), AuthFragment.AuthCallbacks {
 
     val TAG = MainActivity::class.java.name
+    private lateinit var authFrag: AuthFragment
     private lateinit var app: LOTPApp
     private lateinit var adapter: ViewPagerAdapter
 
@@ -37,9 +38,9 @@ class MainActivity : AppCompatActivity(), AuthFragment.AuthCallbacks {
         adapter = ViewPagerAdapter(supportFragmentManager)
         adapter.addFragment(LeaderBoardFragment(), "Leader Board")
         if (app.getCurrentPlayer() == null) {
-            val authFrag: AuthFragment = AuthFragment()
+            authFrag = AuthFragment()
             authFrag.setAuthCallbacks(this)
-            adapter.addFragment(authFrag, "Profile")
+            adapter.addFragment(authFrag, "Sign In/ Register")
         } else {
             adapter.addFragment(ProfileFragment.newInstance(app.getCurrentPlayer() as Player), "Profile")
             adapter.addFragment(InboxFragment(), "Inbox")
@@ -61,12 +62,24 @@ class MainActivity : AppCompatActivity(), AuthFragment.AuthCallbacks {
             mFragmentTitleList.add(title)
         }
 
+        fun removeFragment() {
+            mFragmentList.removeAt(mFragmentList.size - 1)
+            mFragmentTitleList.removeAt(mFragmentTitleList.size - 1)
+        }
+
         override fun getPageTitle(position: Int): CharSequence = mFragmentTitleList[position]
     }
 
     override fun playerSignedIn(player: Player) {
         setupViewPager()
-        adapter.notifyDataSetChanged()
+//        supportFragmentManager
+//                .beginTransaction()
+//                .remove(authFrag)
+//                .commitAllowingStateLoss()
+//
+//        adapter.addFragment(ProfileFragment.newInstance(app.getCurrentPlayer() as Player), "Profile")
+//        adapter.addFragment(InboxFragment(), "Inbox")
+//        adapter.notifyDataSetChanged()
     }
 
     override fun authCancelled() {

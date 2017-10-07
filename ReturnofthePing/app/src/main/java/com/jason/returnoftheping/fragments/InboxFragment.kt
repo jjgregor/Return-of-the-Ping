@@ -48,19 +48,19 @@ class InboxFragment : Fragment() {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({ response ->
                     response?.let {
-                        inbox_progress.visibility = View.GONE
+                        inbox_progress?.visibility = View.GONE
                         if (response.pendingMatches.isEmpty()) {
-                            inbox_empty.visibility = View.VISIBLE
+                            inbox_empty?.visibility = View.VISIBLE
                         } else {
-                            inbox_recycler.visibility = View.VISIBLE
+                            inbox_recycler?.visibility = View.VISIBLE
                             bindInbox(response.pendingMatches)
                         }
                     }
                 }, { t: Throwable? ->
                     Log.d(TAG, "Error retrieving inbox: ", t)
-                    inbox_progress.visibility = View.GONE
-                    inbox_empty.visibility = View.VISIBLE
-                    inbox_empty.text = getString(R.string.inbox_error_message)
+                    inbox_progress?.visibility = View.GONE
+                    inbox_empty?.visibility = View.VISIBLE
+                    inbox_empty?.text = getString(R.string.inbox_error_message)
                 })
     }
 

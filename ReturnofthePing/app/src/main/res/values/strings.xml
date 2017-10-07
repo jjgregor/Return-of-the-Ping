@@ -66,6 +66,9 @@
     <string name="leader_board_wins_lbl">Wins</string>
     <string name="leader_board_player_lbl">Player</string>
     <string name="try_again">Try Again</string>
+    <string name="title_leaderboard">Leader Board</string>
+    <string name="title_new_match">Inbox</string>
+    <string name="title_profile">Profile</string>
 
     <!-- Plurals -->
     <plurals name="matches">

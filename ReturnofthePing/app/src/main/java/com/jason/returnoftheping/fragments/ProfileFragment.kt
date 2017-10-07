@@ -11,8 +11,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.bumptech.glide.Glide
-import com.bumptech.glide.request.RequestOptions
 import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
@@ -72,24 +70,13 @@ class ProfileFragment : Fragment() {
                 .subscribe({ response ->
                     response?.let {
                         profile = it
-                        bindProfile()
+                        bindGraphs()
+                        bindMatchHistory()
                     }
                 }, {
                     t: Throwable? ->
                     Log.d(TAG, "Error retrieving profile: ", t)
                 })
-    }
-
-    private fun bindProfile() {
-        profile?.player?.gravatarImageUrl?.let {
-            Glide.with(context)
-                    .load(it)
-                    .apply(RequestOptions().centerCrop())
-                    .into(profile_avatar)
-        }
-
-        bindGraphs()
-        bindMatchHistory()
     }
 
     private fun bindGraphs() {
