@@ -49,12 +49,13 @@ class InboxFragment : Fragment() {
                 .subscribe({ response ->
                     response?.let {
                         inbox_progress?.visibility = View.GONE
-                        if (response.pendingMatches.isEmpty()) {
+                        if (response.matches.isEmpty()) {
                             inbox_empty?.visibility = View.VISIBLE
                         } else {
                             inbox_recycler?.visibility = View.VISIBLE
-                            bindInbox(response.pendingMatches)
+                            bindInbox(response.matches)
                         }
+                        swipe_refresh.isRefreshing = false
                     }
                 }, { t: Throwable? ->
                     Log.d(TAG, "Error retrieving inbox: ", t)
