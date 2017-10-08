@@ -29,7 +29,6 @@ class AuthFragment : Fragment(), SignInFragment.SignInCallbacks {
     val TAG = AuthFragment::class.java.name
     private var callBacks: AuthCallbacks? = null
     private lateinit var app: LOTPApp
-    private var fragmentContainerId: Int? = null
 
     interface AuthCallbacks {
         fun playerSignedIn(player: Player)
@@ -39,12 +38,9 @@ class AuthFragment : Fragment(), SignInFragment.SignInCallbacks {
 
     fun setAuthCallbacks(callback: AuthCallbacks) { callBacks = callback }
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val root = inflater?.inflate(R.layout.fragment_auth, container, false)
-        fragmentContainerId = container?.id
+    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View?
+            = inflater?.inflate(R.layout.fragment_auth, container, false)
 
-        return root
-    }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
@@ -184,12 +180,6 @@ class AuthFragment : Fragment(), SignInFragment.SignInCallbacks {
         Preferences().setCurrentPlayer(response.player, activity)
         Preferences().setAccessToken(response.accessToken, activity)
         app.setCurrentPlayer(response.player)
-
-//        fragmentManager
-//                .beginTransaction()
-//                .replace(fragmentContainerId ?: 0, (ProfileFragment.newInstance(app.getCurrentPlayer() as Player)), "PROFILE")
-//                .commitAllowingStateLoss()
-
 
         callBacks?.let { it.playerSignedIn(response.player) }
         view?.let { Snackbar.make(it, getString(R.string.sign_in_successful), Snackbar.LENGTH_LONG).show() }

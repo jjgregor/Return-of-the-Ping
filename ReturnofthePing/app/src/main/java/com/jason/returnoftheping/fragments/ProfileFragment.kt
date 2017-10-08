@@ -28,7 +28,6 @@ import rx.android.schedulers.AndroidSchedulers
 import rx.schedulers.Schedulers
 import javax.inject.Inject
 
-
 /**
  * Created by Jason on 9/24/17.
  */

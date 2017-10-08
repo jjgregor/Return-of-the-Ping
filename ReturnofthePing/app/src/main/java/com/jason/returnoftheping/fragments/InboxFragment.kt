@@ -1,6 +1,7 @@
 package com.jason.returnoftheping.fragments
 
 import android.os.Bundle
+import android.support.design.widget.Snackbar
 import android.support.v4.app.Fragment
 import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
@@ -43,7 +44,7 @@ class InboxFragment : Fragment() {
     }
 
     private fun getPendingMatches() {
-        service.getPendingMatches()
+        service.getInbox()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({ response ->
@@ -71,11 +72,26 @@ class InboxFragment : Fragment() {
         inbox_recycler.layoutManager = LinearLayoutManager(context)
         inbox_recycler.setHasFixedSize(true)
         inbox_recycler.adapter = InboxMatchesAdapter(messages, object : OnMatchConfirmationItemClickedListener {
-            override fun onItemClicked(item: MatchConfirmationRequest)  = sendMatchConfirmation(item)
+            override fun onItemClicked(item: MatchConfirmationRequest) = sendMatchConfirmation(item)
         })
     }
 
     private fun sendMatchConfirmation(item: MatchConfirmationRequest) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        service.confirmMatch(item)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({ response ->
+                    response?.let {
+                        if(it.success.contains("success")){
+                            view?.let { Snackbar.make(it, getString(R.string.match_confirmation_failed), Snackbar.LENGTH_LONG).show() }
+                            getPendingMatches()
+                        } else {
+                            view?.let { Snackbar.make(it, getString(R.string.match_confirmation_failed), Snackbar.LENGTH_LONG).show() }
+                        }
+                    }
+                }, {
+                    t: Throwable? -> Log.d(TAG, "Error confirming match: ", t)
+                    view?.let { Snackbar.make(it, getString(R.string.match_confirmation_failed), Snackbar.LENGTH_LONG).show() }
+                })
     }
 }

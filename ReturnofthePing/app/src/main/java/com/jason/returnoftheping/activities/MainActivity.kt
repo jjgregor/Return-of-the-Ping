@@ -17,7 +17,6 @@ import kotlinx.android.synthetic.main.activity_main.*
 import java.io.Serializable
 import java.util.*
 
-
 class MainActivity : AppCompatActivity(), AuthFragment.AuthCallbacks {
 
     val TAG = MainActivity::class.java.name
@@ -62,24 +61,15 @@ class MainActivity : AppCompatActivity(), AuthFragment.AuthCallbacks {
             mFragmentTitleList.add(title)
         }
 
-        fun removeFragment() {
-            mFragmentList.removeAt(mFragmentList.size - 1)
-            mFragmentTitleList.removeAt(mFragmentTitleList.size - 1)
-        }
-
         override fun getPageTitle(position: Int): CharSequence = mFragmentTitleList[position]
     }
 
     override fun playerSignedIn(player: Player) {
-        setupViewPager()
-//        supportFragmentManager
-//                .beginTransaction()
-//                .remove(authFrag)
-//                .commitAllowingStateLoss()
-//
-//        adapter.addFragment(ProfileFragment.newInstance(app.getCurrentPlayer() as Player), "Profile")
-//        adapter.addFragment(InboxFragment(), "Inbox")
-//        adapter.notifyDataSetChanged()
+        supportFragmentManager
+                .beginTransaction()
+                .remove(authFrag)
+                .commitAllowingStateLoss()
+        this.recreate()
     }
 
     override fun authCancelled() {

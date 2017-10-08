@@ -21,7 +21,10 @@ interface LOTPService {
     fun getProfile(@Path("profileId") playerId: Long): Observable<Profile>
 
     @GET("v1/inbox")
-    fun getPendingMatches(): Observable<InboxResponse>
+    fun getInbox(): Observable<InboxResponse>
+
+    @POST("v1/pendingMatch")
+    fun confirmMatch(@Body response: MatchConfirmationRequest): Observable<MatchConfirmationResponse>
 
     @POST("v1/register")
     fun register(@Body credentials: Player): Observable<Player>
@@ -40,7 +43,4 @@ interface LOTPService {
 
     @POST("v1/match")
     fun saveMatch(@Body match: Match): Observable<String>
-
-    @POST("v1/pendingMatch")
-    fun confirmMatch(@Body response: MatchConfirmationRequest): Observable<MatchConfirmationRequest>
 }
