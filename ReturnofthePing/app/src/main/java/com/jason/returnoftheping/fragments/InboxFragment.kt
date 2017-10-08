@@ -55,11 +55,19 @@ class InboxFragment : Fragment() {
                         if (it.matches.isEmpty() && it.registrationRequests.isEmpty()) {
                             inbox_empty?.visibility = View.VISIBLE
                         } else {
+
                             if (it.matches.isNotEmpty()) {
+                                inbox_matches_recycler?.visibility = View.VISIBLE
                                 bindInboxMatches(response.matches)
+                            } else {
+                                inbox_matches_recycler?.visibility = View.GONE
                             }
+
                             if (it.registrationRequests.isNotEmpty()) {
+                                inbox_registration_recycler.visibility = View.VISIBLE
                                 bindInboxRegistrationRequests(response.registrationRequests)
+                            } else {
+                                inbox_registration_recycler.visibility = View.GONE
                             }
                         }
                         swipe_refresh.isRefreshing = false
@@ -73,7 +81,6 @@ class InboxFragment : Fragment() {
     }
 
     private fun bindInboxRegistrationRequests(registrationRequests: ArrayList<RegistrationRequest>) {
-        inbox_registration_recycler.visibility = View.VISIBLE
         inbox_registration_recycler.isNestedScrollingEnabled = false
         inbox_registration_recycler.addItemDecoration(DividerItemDecoration(context, LinearLayoutManager.VERTICAL))
         inbox_registration_recycler.layoutManager = LinearLayoutManager(context)
@@ -90,7 +97,6 @@ class InboxFragment : Fragment() {
     }
 
     private fun bindInboxMatches(messages: List<Match>) {
-        inbox_matches_recycler?.visibility = View.VISIBLE
         inbox_matches_recycler.isNestedScrollingEnabled = false
         inbox_matches_recycler.addItemDecoration(DividerItemDecoration(context, LinearLayoutManager.VERTICAL))
         inbox_matches_recycler.layoutManager = LinearLayoutManager(context)
@@ -107,7 +113,12 @@ class InboxFragment : Fragment() {
                 .subscribe({ response ->
                     response?.let {
                         if (it.success.contains("success")) {
-                            view?.let { Snackbar.make(it, getString(R.string.match_confirmation_success), Snackbar.LENGTH_LONG).show() }
+                            view?.let {
+                                Snackbar.make(it,
+                                        if (confirmed) getString(R.string.match_confirmation_success)
+                                        else getString(R.string.match_confirmation_declined),
+                                        Snackbar.LENGTH_LONG).show()
+                            }
                             getPendingMatches()
                             inbox_matches_recycler.adapter.notifyDataSetChanged()
                         } else {

@@ -25,6 +25,7 @@
 
     <string name="match_confirmation_failed">Failed to send match confirmation.</string>
     <string name="match_confirmation_success">Match confirmed!</string>
+    <string name="match_confirmation_declined">Match declined!</string>
 
     <!-- Profile -->
     <string name="profile_matches_lbl">Matches</string>
