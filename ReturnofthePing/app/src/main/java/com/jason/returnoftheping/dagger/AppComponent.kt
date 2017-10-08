@@ -2,10 +2,7 @@ package com.jason.returnoftheping.dagger
 
 import com.jason.returnoftheping.LOTPApp
 import com.jason.returnoftheping.activities.MainActivity
-import com.jason.returnoftheping.fragments.InboxFragment
-import com.jason.returnoftheping.fragments.LeaderBoardFragment
-import com.jason.returnoftheping.fragments.ProfileFragment
-import com.jason.returnoftheping.fragments.SignInFragment
+import com.jason.returnoftheping.fragments.*
 import com.jason.returnoftheping.services.LOTPService
 import dagger.Component
 import javax.inject.Singleton
@@ -30,4 +27,6 @@ interface AppComponent {
     fun inject(profileFragment: ProfileFragment)
 
     fun inject(inboxFragment: InboxFragment)
+
+    fun inject(newMatchDialogFragment: NewMatchDialogFragment)
 }

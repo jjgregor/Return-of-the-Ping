@@ -17,6 +17,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 import java.io.Serializable
 import java.util.*
 
+
 class MainActivity : AppCompatActivity(), AuthFragment.AuthCallbacks {
 
     val TAG = MainActivity::class.java.name
@@ -29,6 +30,8 @@ class MainActivity : AppCompatActivity(), AuthFragment.AuthCallbacks {
         setContentView(R.layout.activity_main)
         app = application as LOTPApp
         setSupportActionBar(toolbar)
+
+        fab.setOnClickListener {  }
 
         setupViewPager()
     }

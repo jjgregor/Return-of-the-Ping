@@ -24,7 +24,8 @@ interface LOTPService {
     fun getInbox(): Observable<InboxResponse>
 
     @POST("v1/pendingMatch")
-    fun confirmMatch(@Body response: MatchConfirmationRequest): Observable<MatchConfirmationResponse>
+    @FormUrlEncoded
+    fun confirmMatch(@Field("confirmed") confirmed: Boolean, @Field("matchId") matchId: Int): Observable<MatchConfirmationResponse>
 
     @POST("v1/grantAccess")
     fun grantAccess(@Body token: RegistrationRequest)
@@ -45,7 +46,7 @@ interface LOTPService {
     fun getHistory(@Path("opponentId") opponentId: Int): Observable<Player>
 
     @GET("v1/players")
-    fun getAllPlayers(): Observable<List<Player>>
+    fun getAllPlayers(): Observable<ArrayList<Player>>
 
     @POST("v1/match")
     fun saveMatch(@Body match: Match): Observable<String>

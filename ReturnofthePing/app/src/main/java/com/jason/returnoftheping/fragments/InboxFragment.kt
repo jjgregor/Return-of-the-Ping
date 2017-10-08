@@ -15,7 +15,6 @@ import com.jason.returnoftheping.adapters.InboxMatchesAdapter
 import com.jason.returnoftheping.adapters.InboxMatchesAdapter.OnMatchConfirmationItemClickedListener
 import com.jason.returnoftheping.adapters.InboxRegistrationAdapter
 import com.jason.returnoftheping.models.Match
-import com.jason.returnoftheping.models.MatchConfirmationRequest
 import com.jason.returnoftheping.models.RegistrationConfirmationRequest
 import com.jason.returnoftheping.models.RegistrationRequest
 import com.jason.returnoftheping.services.LOTPService
@@ -97,19 +96,20 @@ class InboxFragment : Fragment() {
         inbox_matches_recycler.layoutManager = LinearLayoutManager(context)
         inbox_matches_recycler.setHasFixedSize(true)
         inbox_matches_recycler.adapter = InboxMatchesAdapter(messages, object : OnMatchConfirmationItemClickedListener {
-            override fun onItemClicked(item: MatchConfirmationRequest) = sendMatchConfirmation(item)
+            override fun onItemClicked(item: Boolean, id: Int) = sendMatchConfirmation(item, id)
         })
     }
 
-    private fun sendMatchConfirmation(item: MatchConfirmationRequest) {
-        service.confirmMatch(item)
+    private fun sendMatchConfirmation(confirmed: Boolean, matchId: Int) {
+        service.confirmMatch(confirmed, matchId)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({ response ->
                     response?.let {
                         if (it.success.contains("success")) {
-                            view?.let { Snackbar.make(it, getString(R.string.match_confirmation_failed), Snackbar.LENGTH_LONG).show() }
+                            view?.let { Snackbar.make(it, getString(R.string.match_confirmation_success), Snackbar.LENGTH_LONG).show() }
                             getPendingMatches()
+                            inbox_matches_recycler.adapter.notifyDataSetChanged()
                         } else {
                             view?.let { Snackbar.make(it, getString(R.string.match_confirmation_failed), Snackbar.LENGTH_LONG).show() }
                         }

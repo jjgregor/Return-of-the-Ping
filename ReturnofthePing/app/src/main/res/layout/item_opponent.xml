@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="?android:attr/listPreferredItemHeight"
+    android:orientation="vertical"
+    android:padding="8dp">
+
+    <TextView
+        android:id="@+id/opponent_name"
+        style="?android:attr/dropDownItemStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-condensed"
+        android:maxLines="1"
+        android:textAppearance="?android:attr/textAppearanceLargePopupMenu"
+        tools:text="Jason Gregory" />
+
+    <TextView
+        android:id="@+id/opponent_email"
+        style="?android:attr/dropDownItemStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-light"
+        android:maxLines="1"
+        android:textAppearance="?android:attr/textAppearanceSmallPopupMenu"
+        android:textColor="#323232"
+        tools:text="jagregory@zappos.com" />
+
+</LinearLayout>

@@ -1,0 +1,67 @@
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativeLayout"
+    android:layout_width="match_parent"
+    android:layout_height="?android:attr/listPreferredItemHeight"
+    android:padding="6dp">
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/opponent_avatar"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:elevation="12dp"
+        android:innerRadius="0dp"
+        android:shape="ring"
+        android:thicknessRatio="1.9"
+        app:cardCornerRadius="24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/profile_avatar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:scaleType="centerCrop"
+            tools:src="@drawable/return_of_the_king" />
+
+    </android.support.v7.widget.CardView>
+
+
+    <TextView
+        android:id="@+id/opponent_name"
+        style="?android:attr/dropDownItemStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:fontFamily="sans-serif-condensed"
+        android:maxLines="1"
+        tools:text="Ian Burns"
+        android:textAppearance="?android:attr/textAppearanceLargePopupMenu"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/opponent_avatar"
+        app:layout_constraintTop_toTopOf="@id/opponent_avatar" />
+
+    <TextView
+        android:id="@+id/opponent_email"
+        style="?android:attr/dropDownItemStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:fontFamily="sans-serif-light"
+        android:maxLines="1"
+        android:textAppearance="?android:attr/textAppearanceSmallPopupMenu"
+        android:textColor="#323232"
+        tools:text="ianb821@gmail.com"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/opponent_avatar"
+        app:layout_constraintStart_toStartOf="@id/opponent_name"
+        app:layout_constraintTop_toBottomOf="@id/opponent_name" />
+
+</android.support.constraint.ConstraintLayout>

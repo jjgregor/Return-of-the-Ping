@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import com.jason.returnoftheping.R
 import com.jason.returnoftheping.models.Match
-import com.jason.returnoftheping.models.MatchConfirmationRequest
 import kotlinx.android.synthetic.main.inbox_match_item.view.*
 
 /**
@@ -15,7 +14,7 @@ import kotlinx.android.synthetic.main.inbox_match_item.view.*
 
 class InboxMatchesAdapter(val messages: List<Match>, val  listener: OnMatchConfirmationItemClickedListener) : RecyclerView.Adapter<InboxMatchesAdapter.ViewHolder>() {
     interface OnMatchConfirmationItemClickedListener {
-        fun onItemClicked(item: MatchConfirmationRequest)
+        fun onItemClicked(item: Boolean, id: Int)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder
@@ -41,8 +40,8 @@ class InboxMatchesAdapter(val messages: List<Match>, val  listener: OnMatchConfi
                     .append(") ")
                     .append(item.date)
 
-            view.inbox_registration_decline_btn.setOnClickListener { listener.onItemClicked(MatchConfirmationRequest(false, item.id)) }
-            view.inbox_registration_confirm_btn.setOnClickListener { listener.onItemClicked(MatchConfirmationRequest(true, item.id)) }
+            view.inbox_registration_decline_btn.setOnClickListener { listener.onItemClicked(false, item.id) }
+            view.inbox_registration_confirm_btn.setOnClickListener { listener.onItemClicked(true, item.id) }
         }
     }
 }
