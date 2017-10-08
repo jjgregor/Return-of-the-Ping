@@ -6,12 +6,10 @@ import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
+import android.view.View
 import com.jason.returnoftheping.LOTPApp
 import com.jason.returnoftheping.R
-import com.jason.returnoftheping.fragments.AuthFragment
-import com.jason.returnoftheping.fragments.InboxFragment
-import com.jason.returnoftheping.fragments.LeaderBoardFragment
-import com.jason.returnoftheping.fragments.ProfileFragment
+import com.jason.returnoftheping.fragments.*
 import com.jason.returnoftheping.models.Player
 import kotlinx.android.synthetic.main.activity_main.*
 import java.io.Serializable
@@ -31,19 +29,22 @@ class MainActivity : AppCompatActivity(), AuthFragment.AuthCallbacks {
         app = application as LOTPApp
         setSupportActionBar(toolbar)
 
-        fab.setOnClickListener {  }
+        fab.setOnClickListener { NewMatchDialogFragment().show(supportFragmentManager, "fragment_new_match") }
 
         setupViewPager()
     }
 
     private fun setupViewPager() {
         adapter = ViewPagerAdapter(supportFragmentManager)
-        adapter.addFragment(LeaderBoardFragment(), "Leader Board")
+
         if (app.getCurrentPlayer() == null) {
+            fab.visibility = View.GONE
             authFrag = AuthFragment()
             authFrag.setAuthCallbacks(this)
             adapter.addFragment(authFrag, "Sign In/ Register")
         } else {
+            fab.visibility = View.VISIBLE
+            adapter.addFragment(LeaderBoardFragment(), "Leader Board")
             adapter.addFragment(ProfileFragment.newInstance(app.getCurrentPlayer() as Player), "Profile")
             adapter.addFragment(InboxFragment(), "Inbox")
         }
