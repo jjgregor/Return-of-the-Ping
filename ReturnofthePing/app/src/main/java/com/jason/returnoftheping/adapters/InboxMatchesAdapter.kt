@@ -12,7 +12,7 @@ import kotlinx.android.synthetic.main.inbox_item.view.*
 /**
  * Created by Jason on 10/1/17.
  */
-class InboxAdapter(val messages: List<Match>, val  listener: OnMatchConfirmationItemClickedListener) : RecyclerView.Adapter<InboxAdapter.ViewHolder>() {
+class InboxMatchesAdapter(val messages: List<Match>, val  listener: OnMatchConfirmationItemClickedListener) : RecyclerView.Adapter<InboxMatchesAdapter.ViewHolder>() {
 
     interface OnMatchConfirmationItemClickedListener {
         fun onItemClicked(item: MatchConfirmationRequest)
@@ -29,17 +29,17 @@ class InboxAdapter(val messages: List<Match>, val  listener: OnMatchConfirmation
     inner class ViewHolder(val view: View) : RecyclerView.ViewHolder(view.rootView) {
 
         fun bindItem(item: Match) {
-            val win = item.playerTwoWins > item.playerOneWins
+            val win = item.isWin
             view.inbox_match_confirmation_result_lbl.text = if (win) "W" else "L"
             view.inbox_match_confirmation_result_lbl.setBackgroundResource(if (win) R.drawable.win_background else R.drawable.loss_background)
 
             view.inbox_match_match.text = StringBuilder()
-                    .append(item.playerOneName)
+                    .append(item.opponentName)
                     .append(" (")
-                    .append(item.playerOneWins)
+                    .append(item.wins)
                     .append("-")
-                    .append(item.playerTwoWins)
-                    .append(" )")
+                    .append(item.losses)
+                    .append(") ")
                     .append(item.date)
 
             view.inbox_match_confirmation_decline_btn.setOnClickListener { listener.onItemClicked(MatchConfirmationRequest(false, item.id)) }

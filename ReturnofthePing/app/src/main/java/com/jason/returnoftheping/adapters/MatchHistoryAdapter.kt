@@ -9,7 +9,6 @@ import com.jason.returnoftheping.databinding.MatchHistoryItemBinding
 import com.jason.returnoftheping.models.Match
 
 
-
 /**
  * Created by Jason on 9/30/17.
  */
@@ -28,7 +27,7 @@ class MatchHistoryAdapter(val matches: List<Match>) : RecyclerView.Adapter<Match
 
             binding.match = item
 
-            val win = item.playerTwoWins > item.playerOneWins
+            val win = item.isWin
             binding.matchHistoryResult.text = if (win) "W" else "L"
             binding.matchHistoryResult.setBackgroundResource(if (win) R.drawable.win_background else R.drawable.loss_background)
         }

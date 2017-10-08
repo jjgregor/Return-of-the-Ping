@@ -5,11 +5,10 @@ import java.io.Serializable
 /**
  * Created by Jason on 9/7/17.
  */
-data class Match(val playerOneId: Int,
-                 val playerTwoWins: Int,
-                 val playerOneWins: Int,
+data class Match(val opponentId: Int,
+                 val opponentName: String?,
+                 val wins: Int,
+                 val losses: Int,
                  val date: String,
                  val id: Int,
-                 val playerTwoId: Int,
-                 val playerOneName: String,
-                 val playerTwoName: String) : Serializable
+                 val isWin: Boolean) : Serializable

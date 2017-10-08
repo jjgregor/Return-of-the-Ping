@@ -10,8 +10,8 @@ import android.view.View
 import android.view.ViewGroup
 import com.jason.returnoftheping.LOTPApp
 import com.jason.returnoftheping.R
-import com.jason.returnoftheping.adapters.InboxAdapter
-import com.jason.returnoftheping.adapters.InboxAdapter.OnMatchConfirmationItemClickedListener
+import com.jason.returnoftheping.adapters.InboxMatchesAdapter
+import com.jason.returnoftheping.adapters.InboxMatchesAdapter.OnMatchConfirmationItemClickedListener
 import com.jason.returnoftheping.models.Match
 import com.jason.returnoftheping.models.MatchConfirmationRequest
 import com.jason.returnoftheping.services.LOTPService
@@ -69,7 +69,7 @@ class InboxFragment : Fragment() {
         inbox_recycler.addItemDecoration(DividerItemDecoration(context, LinearLayoutManager.VERTICAL))
         inbox_recycler.layoutManager = LinearLayoutManager(context)
         inbox_recycler.setHasFixedSize(true)
-        inbox_recycler.adapter = InboxAdapter(messages, object : OnMatchConfirmationItemClickedListener {
+        inbox_recycler.adapter = InboxMatchesAdapter(messages, object : OnMatchConfirmationItemClickedListener {
             override fun onItemClicked(item: MatchConfirmationRequest)  = sendMatchConfirmation(item)
         })
     }

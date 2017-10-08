@@ -17,11 +17,11 @@ interface LOTPService {
     @POST("v1/signin")
     fun signIn(@Field("email") email: String, @Field("password") password: String): Observable<SignInRegisterResponse>
 
-    @GET("v1/profile/{profileId}")
+    @GET("v2/profile/{profileId}")
     fun getProfile(@Path("profileId") playerId: Long): Observable<Profile>
 
-    @GET("v1/pendingMatches")
-    fun getPendingMatches(): Observable<PendingMatchesResponse>
+    @GET("v1/inbox")
+    fun getPendingMatches(): Observable<InboxResponse>
 
     @POST("v1/register")
     fun register(@Body credentials: Player): Observable<Player>

@@ -7,7 +7,7 @@ import java.io.Serializable
  */
 data class Player(
         var id: Long,
-        var name: String,
+        var name: String?,
         var email: String?,
         val pushNotificationsEnabled: Boolean = true,
         val emailNotificationsEnabled: Boolean = true,
