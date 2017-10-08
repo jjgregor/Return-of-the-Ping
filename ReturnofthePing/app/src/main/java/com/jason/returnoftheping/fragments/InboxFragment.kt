@@ -53,12 +53,15 @@ class InboxFragment : Fragment() {
                 .subscribe({ response ->
                     response?.let {
                         inbox_progress?.visibility = View.GONE
-                        if (response.matches.isEmpty()) {
+                        if (it.matches.isEmpty() && it.registrationRequests.isEmpty()) {
                             inbox_empty?.visibility = View.VISIBLE
                         } else {
-                            inbox_matches_recycler?.visibility = View.VISIBLE
-                            bindInboxMatches(response.matches)
-                            bindInboxRegistrationRequests(response.registrationRequests)
+                            if (it.matches.isNotEmpty()) {
+                                bindInboxMatches(response.matches)
+                            }
+                            if (it.registrationRequests.isNotEmpty()) {
+                                bindInboxRegistrationRequests(response.registrationRequests)
+                            }
                         }
                         swipe_refresh.isRefreshing = false
                     }
@@ -88,6 +91,7 @@ class InboxFragment : Fragment() {
     }
 
     private fun bindInboxMatches(messages: List<Match>) {
+        inbox_matches_recycler?.visibility = View.VISIBLE
         inbox_matches_recycler.isNestedScrollingEnabled = false
         inbox_matches_recycler.addItemDecoration(DividerItemDecoration(context, LinearLayoutManager.VERTICAL))
         inbox_matches_recycler.layoutManager = LinearLayoutManager(context)
@@ -103,7 +107,7 @@ class InboxFragment : Fragment() {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({ response ->
                     response?.let {
-                        if(it.success.contains("success")){
+                        if (it.success.contains("success")) {
                             view?.let { Snackbar.make(it, getString(R.string.match_confirmation_failed), Snackbar.LENGTH_LONG).show() }
                             getPendingMatches()
                         } else {
@@ -111,7 +115,8 @@ class InboxFragment : Fragment() {
                         }
                     }
                 }, {
-                    t: Throwable? -> Log.d(TAG, "Error confirming match: ", t)
+                    t: Throwable? ->
+                    Log.d(TAG, "Error confirming match: ", t)
                     view?.let { Snackbar.make(it, getString(R.string.match_confirmation_failed), Snackbar.LENGTH_LONG).show() }
                 })
     }
