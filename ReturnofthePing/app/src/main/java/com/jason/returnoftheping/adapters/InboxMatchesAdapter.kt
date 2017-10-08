@@ -7,20 +7,19 @@ import android.view.ViewGroup
 import com.jason.returnoftheping.R
 import com.jason.returnoftheping.models.Match
 import com.jason.returnoftheping.models.MatchConfirmationRequest
-import kotlinx.android.synthetic.main.inbox_item.view.*
+import kotlinx.android.synthetic.main.inbox_match_item.view.*
 
 /**
  * Created by Jason on 10/1/17.
  */
-class InboxMatchesAdapter(val messages: List<Match>, val  listener: OnMatchConfirmationItemClickedListener) : RecyclerView.Adapter<InboxMatchesAdapter.ViewHolder>() {
 
+class InboxMatchesAdapter(val messages: List<Match>, val  listener: OnMatchConfirmationItemClickedListener) : RecyclerView.Adapter<InboxMatchesAdapter.ViewHolder>() {
     interface OnMatchConfirmationItemClickedListener {
         fun onItemClicked(item: MatchConfirmationRequest)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.inbox_item, parent, false))
-    }
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder
+            = ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.inbox_match_item, parent, false))
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) = holder.bindItem(messages[position])
 
@@ -42,8 +41,8 @@ class InboxMatchesAdapter(val messages: List<Match>, val  listener: OnMatchConfi
                     .append(") ")
                     .append(item.date)
 
-            view.inbox_match_confirmation_decline_btn.setOnClickListener { listener.onItemClicked(MatchConfirmationRequest(false, item.id)) }
-            view.inbox_match_confirmation_confirm_btn.setOnClickListener { listener.onItemClicked(MatchConfirmationRequest(true, item.id)) }
+            view.inbox_registration_decline_btn.setOnClickListener { listener.onItemClicked(MatchConfirmationRequest(false, item.id)) }
+            view.inbox_registration_confirm_btn.setOnClickListener { listener.onItemClicked(MatchConfirmationRequest(true, item.id)) }
         }
     }
 }

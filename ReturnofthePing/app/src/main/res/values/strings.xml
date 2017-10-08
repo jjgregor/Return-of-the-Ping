@@ -59,6 +59,8 @@
     <string name="confirm_match">Confirm Match</string>
     <string name="decline_btn_txt">decline</string>
     <string name="confirm_btn_txt">confirm</string>
+    <string name="deny_btn_txt">deny</string>
+    <string name="approve_btn_txt">approve</string>
     <string name="inbox_error_message">Sorry we couldn\'t load your inbox at this time.</string>
     <string name="inbox_empty_view">You don\'t have any messages at this time.</string>
     <string name="please_sign_in">Please sign in to view your inbox.</string>
@@ -71,6 +73,7 @@
     <string name="title_leaderboard">Leader Board</string>
     <string name="title_new_match">Inbox</string>
     <string name="title_profile">Profile</string>
+    <string name="inbox_confirm_registration">Player Approval</string>
 
     <!-- Plurals -->
     <plurals name="matches">

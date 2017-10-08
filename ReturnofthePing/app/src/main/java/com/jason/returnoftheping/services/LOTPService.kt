@@ -26,6 +26,12 @@ interface LOTPService {
     @POST("v1/pendingMatch")
     fun confirmMatch(@Body response: MatchConfirmationRequest): Observable<MatchConfirmationResponse>
 
+    @POST("v1/grantAccess")
+    fun grantAccess(@Body token: RegistrationRequest)
+
+    @POST("v1/denyAccess")
+    fun denyAccess(@Body token: RegistrationRequest)
+
     @POST("v1/register")
     fun register(@Body credentials: Player): Observable<Player>
 

@@ -13,8 +13,11 @@ import com.jason.returnoftheping.LOTPApp
 import com.jason.returnoftheping.R
 import com.jason.returnoftheping.adapters.InboxMatchesAdapter
 import com.jason.returnoftheping.adapters.InboxMatchesAdapter.OnMatchConfirmationItemClickedListener
+import com.jason.returnoftheping.adapters.InboxRegistrationAdapter
 import com.jason.returnoftheping.models.Match
 import com.jason.returnoftheping.models.MatchConfirmationRequest
+import com.jason.returnoftheping.models.RegistrationConfirmationRequest
+import com.jason.returnoftheping.models.RegistrationRequest
 import com.jason.returnoftheping.services.LOTPService
 import kotlinx.android.synthetic.main.fragment_inbox.*
 import rx.android.schedulers.AndroidSchedulers
@@ -53,8 +56,9 @@ class InboxFragment : Fragment() {
                         if (response.matches.isEmpty()) {
                             inbox_empty?.visibility = View.VISIBLE
                         } else {
-                            inbox_recycler?.visibility = View.VISIBLE
-                            bindInbox(response.matches)
+                            inbox_matches_recycler?.visibility = View.VISIBLE
+                            bindInboxMatches(response.matches)
+                            bindInboxRegistrationRequests(response.registrationRequests)
                         }
                         swipe_refresh.isRefreshing = false
                     }
@@ -66,12 +70,29 @@ class InboxFragment : Fragment() {
                 })
     }
 
-    private fun bindInbox(messages: List<Match>) {
-        inbox_recycler.isNestedScrollingEnabled = false
-        inbox_recycler.addItemDecoration(DividerItemDecoration(context, LinearLayoutManager.VERTICAL))
-        inbox_recycler.layoutManager = LinearLayoutManager(context)
-        inbox_recycler.setHasFixedSize(true)
-        inbox_recycler.adapter = InboxMatchesAdapter(messages, object : OnMatchConfirmationItemClickedListener {
+    private fun bindInboxRegistrationRequests(registrationRequests: ArrayList<RegistrationRequest>) {
+        inbox_registration_recycler.visibility = View.VISIBLE
+        inbox_registration_recycler.isNestedScrollingEnabled = false
+        inbox_registration_recycler.addItemDecoration(DividerItemDecoration(context, LinearLayoutManager.VERTICAL))
+        inbox_registration_recycler.layoutManager = LinearLayoutManager(context)
+        inbox_registration_recycler.setHasFixedSize(true)
+        inbox_matches_recycler.adapter = InboxRegistrationAdapter(registrationRequests, object : InboxRegistrationAdapter.OnRegistrationConfirmationItemClickedListener {
+            override fun onDenyRequest(item: RegistrationConfirmationRequest) {
+                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+            }
+
+            override fun onConfirmRequest(item: RegistrationConfirmationRequest) {
+                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+            }
+        })
+    }
+
+    private fun bindInboxMatches(messages: List<Match>) {
+        inbox_matches_recycler.isNestedScrollingEnabled = false
+        inbox_matches_recycler.addItemDecoration(DividerItemDecoration(context, LinearLayoutManager.VERTICAL))
+        inbox_matches_recycler.layoutManager = LinearLayoutManager(context)
+        inbox_matches_recycler.setHasFixedSize(true)
+        inbox_matches_recycler.adapter = InboxMatchesAdapter(messages, object : OnMatchConfirmationItemClickedListener {
             override fun onItemClicked(item: MatchConfirmationRequest) = sendMatchConfirmation(item)
         })
     }
