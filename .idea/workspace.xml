@@ -1,0 +1,412 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="3d7000f5-8e50-4260-81ba-9b71bf173713" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/ReturnofthePing/.gitignore" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReturnofthePing/.idea/compiler.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReturnofthePing/.idea/dictionaries/Jason.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReturnofthePing/.idea/gradle.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReturnofthePing/.idea/misc.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReturnofthePing/.idea/modules.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReturnofthePing/.idea/runConfigurations.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReturnofthePing/.idea/vcs.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReturnofthePing/app/.gitignore" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReturnofthePing/app/build.gradle" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReturnofthePing/app/proguard-rules.pro" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReturnofthePing/app/src/androidTest/java/com/jason/returnoftheping/ExampleInstrumentedTest.kt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReturnofthePing/app/src/main/AndroidManifest.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReturnofthePing/app/src/main/java/com/jason/returnoftheping/LOTPApp.kt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReturnofthePing/app/src/main/java/com/jason/returnoftheping/activities/MainActivity.kt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReturnofthePing/app/src/main/java/com/jason/returnoftheping/adapters/InboxMatchesAdapter.kt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReturnofthePing/app/src/main/java/com/jason/returnoftheping/adapters/InboxRegistrationAdapter.kt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReturnofthePing/app/src/main/java/com/jason/returnoftheping/adapters/LeaderBoardAdapter.kt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReturnofthePing/app/src/main/java/com/jason/returnoftheping/adapters/MatchHistoryAdapter.kt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReturnofthePing/app/src/main/java/com/jason/returnoftheping/adapters/OpponentAutoCompleteAdapter.kt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReturnofthePing/app/src/main/java/com/jason/returnoftheping/constants/Constants.kt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReturnofthePing/app/src/main/java/com/jason/returnoftheping/dagger/AppComponent.kt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReturnofthePing/app/src/main/java/com/jason/returnoftheping/dagger/AppModule.kt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReturnofthePing/app/src/main/java/com/jason/returnoftheping/dagger/LOTPServiceMod.kt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReturnofthePing/app/src/main/java/com/jason/returnoftheping/dagger/NetworkModule.kt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReturnofthePing/app/src/main/java/com/jason/returnoftheping/fragments/AuthFragment.kt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReturnofthePing/app/src/main/java/com/jason/returnoftheping/fragments/InboxFragment.kt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReturnofthePing/app/src/main/java/com/jason/returnoftheping/fragments/LeaderBoardFragment.kt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReturnofthePing/app/src/main/java/com/jason/returnoftheping/fragments/NewMatchDialogFragment.kt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReturnofthePing/app/src/main/java/com/jason/returnoftheping/fragments/ProfileFragment.kt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReturnofthePing/app/src/main/java/com/jason/returnoftheping/fragments/SignInFragment.kt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReturnofthePing/app/src/main/java/com/jason/returnoftheping/models/InboxResponse.kt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReturnofthePing/app/src/main/java/com/jason/returnoftheping/models/LeaderBoard.kt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReturnofthePing/app/src/main/java/com/jason/returnoftheping/models/LeaderBoardItem.kt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReturnofthePing/app/src/main/java/com/jason/returnoftheping/models/Match.kt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReturnofthePing/app/src/main/java/com/jason/returnoftheping/models/MatchConfirmationResponse.kt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReturnofthePing/app/src/main/java/com/jason/returnoftheping/models/Player.kt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReturnofthePing/app/src/main/java/com/jason/returnoftheping/models/Profile.kt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReturnofthePing/app/src/main/java/com/jason/returnoftheping/models/RegistrationConfirmationRequest.kt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReturnofthePing/app/src/main/java/com/jason/returnoftheping/models/RegistrationRequest.kt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReturnofthePing/app/src/main/java/com/jason/returnoftheping/models/SignInRegisterResponse.kt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReturnofthePing/app/src/main/java/com/jason/returnoftheping/models/Stats.kt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReturnofthePing/app/src/main/java/com/jason/returnoftheping/preferences/Preferences.kt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReturnofthePing/app/src/main/java/com/jason/returnoftheping/services/LOTPService.kt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReturnofthePing/app/src/main/java/com/jason/returnoftheping/util/HelperUtil.kt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReturnofthePing/app/src/main/java/com/jason/returnoftheping/util/ObjectMapperFactory.kt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReturnofthePing/app/src/main/res/drawable/ic_add.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReturnofthePing/app/src/main/res/drawable/ic_clear_black_24dp.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReturnofthePing/app/src/main/res/drawable/ic_launcher_background.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReturnofthePing/app/src/main/res/drawable/loss_background.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReturnofthePing/app/src/main/res/drawable/win_background.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReturnofthePing/app/src/main/res/layout/activity_main.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReturnofthePing/app/src/main/res/layout/fragment_auth.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReturnofthePing/app/src/main/res/layout/fragment_inbox.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReturnofthePing/app/src/main/res/layout/fragment_leader_board.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReturnofthePing/app/src/main/res/layout/fragment_new_match.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReturnofthePing/app/src/main/res/layout/fragment_profile.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReturnofthePing/app/src/main/res/layout/inbox_match_item.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReturnofthePing/app/src/main/res/layout/inbox_registration_item.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReturnofthePing/app/src/main/res/layout/item_opponent.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReturnofthePing/app/src/main/res/layout/leader_board_item.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReturnofthePing/app/src/main/res/layout/match_history_item.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReturnofthePing/app/src/main/res/layout/new_match_opponent.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReturnofthePing/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReturnofthePing/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReturnofthePing/app/src/main/res/mipmap-hdpi/ic_launcher.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReturnofthePing/app/src/main/res/mipmap-hdpi/ic_launcher_foreground.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReturnofthePing/app/src/main/res/mipmap-hdpi/ic_launcher_round.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReturnofthePing/app/src/main/res/mipmap-mdpi/ic_launcher.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReturnofthePing/app/src/main/res/mipmap-mdpi/ic_launcher_foreground.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReturnofthePing/app/src/main/res/mipmap-mdpi/ic_launcher_round.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReturnofthePing/app/src/main/res/mipmap-xhdpi/ic_launcher.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReturnofthePing/app/src/main/res/mipmap-xhdpi/ic_launcher_foreground.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReturnofthePing/app/src/main/res/mipmap-xhdpi/ic_launcher_round.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReturnofthePing/app/src/main/res/mipmap-xxhdpi/ic_launcher.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReturnofthePing/app/src/main/res/mipmap-xxhdpi/ic_launcher_foreground.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReturnofthePing/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReturnofthePing/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReturnofthePing/app/src/main/res/mipmap-xxxhdpi/ic_launcher_foreground.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReturnofthePing/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReturnofthePing/app/src/main/res/values/colors.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReturnofthePing/app/src/main/res/values/dimens.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReturnofthePing/app/src/main/res/values/strings.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReturnofthePing/app/src/main/res/values/styles.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReturnofthePing/app/src/test/java/com/jason/returnoftheping/ExampleUnitTest.kt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReturnofthePing/build.gradle" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReturnofthePing/gradle.properties" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReturnofthePing/gradle/wrapper/gradle-wrapper.jar" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReturnofthePing/gradle/wrapper/gradle-wrapper.properties" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReturnofthePing/gradlew" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReturnofthePing/gradlew.bat" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReturnofthePing/settings.gradle" afterPath="" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view />
+      </state>
+    </system>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GradleLocalSettings">
+    <option name="externalProjectsViewState">
+      <projects_view />
+    </option>
+    <option name="projectSyncType">
+      <map>
+        <entry key="$PROJECT_DIR$" value="RE_IMPORT" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" fullScreen="true">
+    <option name="width" value="1280" />
+    <option name="height" value="800" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator currentView="Scope" currentSubView="Project Files" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scratches" />
+      <pane id="Scope">
+        <subPane subId="Project Files">
+          <expand>
+            <path>
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="Return-of-the-Ping" type="cbb8eebc:String" user="Return-of-the-Ping" />
+            </path>
+            <path>
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="Return-of-the-Ping" type="cbb8eebc:String" user="Return-of-the-Ping" />
+              <item name="app" type="cbb8eebc:String" user="app" />
+            </path>
+            <path>
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="Return-of-the-Ping" type="cbb8eebc:String" user="Return-of-the-Ping" />
+              <item name="app" type="cbb8eebc:String" user="app" />
+              <item name="src" type="cbb8eebc:String" user="src" />
+            </path>
+            <path>
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="Return-of-the-Ping" type="cbb8eebc:String" user="Return-of-the-Ping" />
+              <item name="app" type="cbb8eebc:String" user="app" />
+              <item name="src" type="cbb8eebc:String" user="src" />
+              <item name="main" type="cbb8eebc:String" user="main" />
+            </path>
+            <path>
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="Return-of-the-Ping" type="cbb8eebc:String" user="Return-of-the-Ping" />
+              <item name="app" type="cbb8eebc:String" user="app" />
+              <item name="src" type="cbb8eebc:String" user="src" />
+              <item name="main" type="cbb8eebc:String" user="main" />
+              <item name="java/com/jason/returnoftheping" type="cbb8eebc:String" user="java/com/jason/returnoftheping" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="AndroidView">
+        <subPane>
+          <expand>
+            <path>
+              <item name="Return-of-the-Ping" type="1abcf292:AndroidViewProjectNode" />
+              <item name="Return-of-the-Ping" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Return-of-the-Ping" type="1abcf292:AndroidViewProjectNode" />
+              <item name="Return-of-the-Ping" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Return-of-the-Ping" type="1abcf292:AndroidViewProjectNode" />
+              <item name="Return-of-the-Ping" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Return-of-the-Ping" type="1abcf292:AndroidViewProjectNode" />
+              <item name="Return-of-the-Ping" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Return-of-the-Ping" type="1abcf292:AndroidViewProjectNode" />
+              <item name="Return-of-the-Ping" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Return-of-the-Ping" type="1abcf292:AndroidViewProjectNode" />
+              <item name="Return-of-the-Ping" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Return-of-the-Ping" type="1abcf292:AndroidViewProjectNode" />
+              <item name="Return-of-the-Ping" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="jason" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Return-of-the-Ping" type="1abcf292:AndroidViewProjectNode" />
+              <item name="Return-of-the-Ping" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="jason" type="462c0819:PsiDirectoryNode" />
+              <item name="returnoftheping" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="ProjectPane" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="GoToClass.includeLibraries" value="false" />
+    <property name="GoToClass.toSaveIncludeLibraries" value="false" />
+    <property name="GoToFile.includeJavaFiles" value="false" />
+    <property name="MemberChooser.sorted" value="false" />
+    <property name="MemberChooser.showClasses" value="true" />
+    <property name="MemberChooser.copyJavadoc" value="false" />
+    <property name="options.lastSelected" value="project.propVCSSupport.Mappings" />
+    <property name="options.splitter.main.proportions" value="0.3" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
+    <property name="settings.editor.selected.configurable" value="android.sdk-updates" />
+    <property name="settings.editor.splitter.proportion" value="0.2" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="Application" factoryName="Application">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
+    </configuration>
+    <configuration default="true" type="Remote" factoryName="Remote">
+      <option name="USE_SOCKET_TRANSPORT" value="true" />
+      <option name="SERVER_MODE" value="false" />
+      <option name="SHMEM_ADDRESS" value="javadebug" />
+      <option name="HOST" value="localhost" />
+      <option name="PORT" value="5005" />
+    </configuration>
+    <configuration default="true" type="TestNG" factoryName="TestNG">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="ANNOTATION_TYPE" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <envs />
+      <properties />
+      <listeners />
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
+      <Host>localhost</Host>
+      <Port>5050</Port>
+    </configuration>
+    <configuration name="&lt;template&gt;" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" default="true" selected="false">
+      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
+    </configuration>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="3d7000f5-8e50-4260-81ba-9b71bf173713" name="Default" comment="" />
+      <created>1523722377617</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1523722377617</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="0" y="0" width="1280" height="800" extended-state="0" />
+    <layout>
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2536349" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Build" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32954547" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager />
+    <watches-manager />
+  </component>
+</project>
